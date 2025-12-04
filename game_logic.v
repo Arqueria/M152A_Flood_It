@@ -131,6 +131,12 @@ begin
 
 
 end
+else if (DONE_CHANGING_COLOR)
+begin
+    DONE_CHANGING_COLOR <= 0;
+end
+
+
 
 
 end
