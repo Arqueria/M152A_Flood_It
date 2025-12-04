@@ -91,8 +91,9 @@ wire [4:0] final_SIZE;
 wire [3:0] final_COLOR_NUM;
 wire sORc;
 
+
 select selector(
-    .MASTER_CLOCK(HZ1000),
+    .MASTER_CLOCK(HZ5K),
     .UP(BTNU),
     .DOWN(BTND),
     .LEFT(BTNL),
