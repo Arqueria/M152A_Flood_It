@@ -125,9 +125,6 @@ select selector(
 );
 
 
-// Interconnects between selector and rand
-wire INIT_NEW_BOARD;
-wire NEW_BOARD_READY;
 
 wire [2:0] INIT_BOARD [25:0][25:0];
 wire [2:0] CURR_BOARD [25:0][25:0];
@@ -145,13 +142,6 @@ generate_board random_gen(
 
 
 
-// Interconnects between selector and digit and led displays
-wire MODE;
-wire [7:0] TRIES;
-wire [7:0] TOTAL_TRIES;
-wire [4:0] final_SIZE;
-wire [3:0] final_COLOR_NUM;
-wire sORc;
 
 
 
@@ -170,13 +160,7 @@ digit_display digdisp(
 );
 
 
-wire INITIAL_INITIALIZATION;
-wire COLOR_SEL_SIG;
-wire [2:0] COLOR_SELECTED;
-wire BEGIN_GAME;
-wire ACK_BEGIN_GAME;
-wire [4:0] SIZE;
-wire [3:0] COLOR_NUM;
+
 
 
 
