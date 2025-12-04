@@ -197,4 +197,16 @@ leds_set LEDS(
     .led(led)
 );
 
+
+
+
+// COLOR CHART
+// 0 Red
+// 1 Green
+// 2 Blue
+// 3 Yellow
+// 4
+// 5
+// 6
+// 7
 endmodule

@@ -77,7 +77,7 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/clk_div.v
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/digit_display.v
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/displayVGA.v
-  C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/game_logic.v
+  C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/game_logic_combined.v
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/leds_set.v
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/rand.v
   C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/select.v

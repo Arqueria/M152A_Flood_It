@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Thu Dec  4 13:52:15 2025
+# Process ID         : 15304
+# Current directory  : C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/project_1/project_1.runs/impl_1
+# Command line       : vivado.exe -log FloodIt.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source FloodIt.tcl -notrace
+# Log file           : C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/project_1/project_1.runs/impl_1/FloodIt.vdi
+# Journal file       : C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/project_1/project_1.runs/impl_1\vivado.jou
+# Running On         : computerUwU
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22621
+# Processor Detail   : Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz
+# CPU Frequency      : 2304 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 33661 MB
+# Swap memory        : 5100 MB
+# Total Virtual      : 38761 MB
+# Available Virtual  : 23745 MB
+#-----------------------------------------------------------
+source FloodIt.tcl -notrace
