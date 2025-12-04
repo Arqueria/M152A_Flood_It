@@ -28,14 +28,15 @@ module select(
 	
 	
 	output reg [4:0] final_SIZE = 14,
-	output reg [3:0] final_COLOR_NUM = 6,
+	output reg [3:0] final_COLOR_NUM = 6, // for display to display correct digits
 	
 	
 	
 	
 	output reg MODE = 0,
 	output reg [7:0] TRIES = 0,
-	output reg COLOR_SEL_SIG = 0
+	output reg COLOR_SEL_SIG = 0,
+	output reg [2:0] COLOR_SELECTED = 0
     
 
 
@@ -167,6 +168,8 @@ endfunction
 
 
 
+// saving for leds
+reg [7:0] SAVED_COLOR_NUM = 0;
 
 
 
@@ -238,44 +241,102 @@ begin
 		ACK_RIGHT <= 0;
 	end
 
-		
-	if (CENTER_PREV == 0 && CENTER == 1)
+	if(BOARD_READY == 1)
+	begin
+		BEGIN_GAME <= 1;
+	end
+	else if(ACK_BEGIN_GAME)
+	begin
+		INITIALIZE_BOARD <= 0;
+		BEGIN_GAME <= 0;
+	end
+	else if (CENTER_PREV == 0 && CENTER == 1)
 	begin
 		ACK_CENTER <= 1;
-		if(~ACK_RIGHT && ~MODE)
+		if(~ACK_RIGHT && ~MODE && ~BEGIN_GAME)
 		begin
 			INITIALIZE_BOARD <= 1;
-
 		end
 	end
 	else if (CENTER_PREV == 1 && CENTER == 0)
 	begin
 		ACK_CENTER <= 0;
-	end
-	
-	
-	if (ACK_BEGIN_GAME)
-	begin
-	   BEGIN_GAME <= 0;
-	   INITIALIZE_BOARD <= 0;
-	   MODE <= 1;
-	end
-	else if (BOARD_READY)
-	   BEGIN_GAME <= 1;
-	
-
-
-
-	
+	end	
 end
 
-always @ (posedge CLOCK)
+reg SW0p = 0;
+reg SW1p = 0;
+reg SW2p = 0;
+reg SW3p = 0;
+reg SW4p = 0;
+reg SW5p = 0;
+reg SW6p = 0;
+reg SW7p = 0;
+
+
+
+
+always @ (posedge MASTER_CLOCK)
 begin
-    
+if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME)
+begin
+	SW0p <= sw[0];
+	SW1p <= sw[1];
+	SW2p <= sw[2];
+	SW3p <= sw[3];
+	SW4p <= sw[4];
+	SW5p <= sw[5];
+	SW6p <= sw[6];
+	SW7p <= sw[7];
 
-	
+
+	if(COLOR_SEL_SIG || ack)
+	begin
+		if(ack)
+			COLOR_SEL_SIG <= 0;
+	end
+	else if(SW0p == ~sw[0])
+	begin
+		COLOR_SELECTED <= 0;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW1p == ~sw[1])
+	begin
+		COLOR_SELECTED <= 1;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW2p == ~sw[2])
+	begin
+		COLOR_SELECTED <= 2;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW3p == ~sw[3])
+	begin
+		COLOR_SELECTED <= 3;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW4p == ~sw[4])
+	begin
+		COLOR_SELECTED <= 4;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW5p == ~sw[5])
+	begin
+		COLOR_SELECTED <= 5;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW6p == ~sw[6])
+	begin
+		COLOR_SELECTED <= 6;
+		COLOR_SEL_SIG <= 1;
+	end
+	else if(SW7p == ~sw[7])
+	begin
+		COLOR_SELECTED <= 7;
+		COLOR_SEL_SIG <= 1;
+	end
 end
-
+end
 
 
 
