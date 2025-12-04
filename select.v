@@ -275,7 +275,6 @@ reg SW7p = 0;
 
 
 
-
 always @ (posedge MASTER_CLOCK)
 begin
 if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME)
@@ -290,9 +289,9 @@ begin
 	SW7p <= sw[7];
 
 
-	if(COLOR_SEL_SIG || ack)
+	if(COLOR_SEL_SIG || CURRENTLY_CHANGING_COLOR)
 	begin
-		if(ack)
+		if(CURRENTLY_CHANGING_COLOR)
 			COLOR_SEL_SIG <= 0;
 	end
 	else if(SW0p == ~sw[0])
