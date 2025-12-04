@@ -180,29 +180,78 @@ begin
 	
 	
 	if (UP_PREV == 0 && UP == 1)
-		UP_HELD <= 1;
+	begin
+		ACK_UP <= 1;
+		if(~ACK_UP && ~MODE)
+		begin
+			if(sORc)
+				SIZE <= SIZE_CHANGE(0);
+			else
+				COLOR_NUM <= COLOR_NUM_CHANGE(0);
+		end		
+	end
 	else if (UP_PREV == 1 && UP == 0)
-		UP_HELD <= 0;
+	begin
+		ACK_UP <= 0;
+	end
 
 	if (DOWN_PREV == 0 && DOWN == 1)
-		DOWN_HELD <= 1;
+	begin
+		ACK_DOWN <= 1;
+		if(~ACK_DOWN && ~MODE)
+		begin
+			if(sORc)
+				SIZE <= SIZE_CHANGE(1);
+			else
+				COLOR_NUM <= COLOR_NUM_CHANGE(1);		
+		end
+	end
 	else if (DOWN_PREV == 1 && DOWN == 0)
-		DOWN_HELD <= 0;
+	begin
+		ACK_DOWN <= 0;
+	end
 
 	if (LEFT_PREV == 0 && LEFT == 1)
-		LEFT_HELD <= 1;
+	begin
+		ACK_LEFT <= 1;
+        if(~ACK_LEFT && ~MODE)
+            sORc <= ~sORc;
+	end
 	else if (LEFT_PREV == 1 && LEFT == 0)
-		LEFT_HELD <= 0;	
+	begin
+		ACK_LEFT <= 0;
+	end
 
-	if (RIGHT_PREV == 0 && RIGHT == 1)
-		RIGHT_HELD <= 1;
+
+	if(BEGIN_GAME == 1 || ACK_BEGIN_GAME == 1)
+	begin
+		MODE <= 1;
+	end
+	else if (RIGHT_PREV == 0 && RIGHT == 1)
+	begin
+		ACK_RIGHT <= 1;
+		if(~ACK_RIGHT)
+			MODE <= ~MODE;
+	end
 	else if (RIGHT_PREV == 1 && RIGHT == 0)
-		RIGHT_HELD <= 0;
+	begin
+		ACK_RIGHT <= 0;
+	end
+
 		
 	if (CENTER_PREV == 0 && CENTER == 1)
-		CENTER_HELD <= 1;
+	begin
+		ACK_CENTER <= 1;
+		if(~ACK_RIGHT && ~MODE)
+		begin
+			INITIALIZE_BOARD <= 1;
+
+		end
+	end
 	else if (CENTER_PREV == 1 && CENTER == 0)
-		CENTER_HELD <= 0;
+	begin
+		ACK_CENTER <= 0;
+	end
 	
 	
 	if (ACK_BEGIN_GAME)
@@ -214,76 +263,15 @@ begin
 	else if (BOARD_READY)
 	   BEGIN_GAME <= 1;
 	
-	if(MODE)
-	begin
-		
-		
-		
-			
-	end
+
+
+
 	
 end
 
-always @ (posedge SLOW_MASTER_CLOCK)
+always @ (posedge CLOCK)
 begin
-    if(~INITIALIZE_BOARD && ~MODE)
-    begin
     
-        if (LEFT_HELD)
-        begin
-            ACK_LEFT <= 1;
-            if(~ACK_LEFT)
-                sORc <= ~sORc;
-        end
-        
-        if (RIGHT_HELD)
-        begin
-            ACK_RIGHT <= 1;
-            if(~ACK_RIGHT)
-                if(~MODE && ~INITIALIZE_BOARD)
-					MODE <= 1; // IDK
-        end
-        
-        if (UP_HELD)
-        begin
-            ACK_UP <= 1;
-            if(~ACK_UP)
-            begin
-                if(sORc)
-                    SIZE <= SIZE_CHANGE(0);
-                else
-                    COLOR_NUM <= COLOR_NUM_CHANGE(0);
-            end
-        end
-        
-        
-        if (DOWN_HELD)
-        begin
-            ACK_DOWN <= 1;
-            if(~ACK_DOWN)
-            begin
-                if(sORc)
-                    SIZE <= SIZE_CHANGE(1);
-                else
-                    COLOR_NUM <= COLOR_NUM_CHANGE(1);		
-            end
-        end
-		
-		
-		
-	end
-	
-	
-	
-	
-	if(CENTER_HELD)
-	begin
-		ACK_CENTER <= 1;
-		if(~ACK_CENTER)
-		begin
-			MODE <= ~MODE;
-		end
-	end
 
 	
 end
