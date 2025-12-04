@@ -1,5 +1,6 @@
 module game_logic(
     input wire CLOCK, 
+    input wire SLOW_CLOCK,
     input wire UPDATE_CLOCK, 
     input wire [2:0] INITIAL_BOARD [25:0][25:0],   
     output reg [2:0] GAME_BOARD [25:0][25:0],
@@ -28,6 +29,33 @@ integer i;
 integer j;
 
 always @ (posedge CLOCK)
+begin
+    
+	
+	// Finite state machine stuff
+    
+    if(~START_NEW_GAME && STARTED_GAME)
+        STARTED_GAME <= 0;
+
+    if(~START_NEW_GAME && ~STARTED_GAME && INITIAL_INIT)
+    begin
+        if(COLOR_SEL_SIG && ~CHANGING_COLOR)
+        begin
+            CHANGING_COLOR <= 1;
+            LOCAL_COLOR_SELECTED <= COLOR_SELECTED;
+        end
+        
+        else if(CHANGING_COLOR && DONE_CHANGING_COLOR)
+        begin
+            CHANGING_COLOR <= 0;
+            DONE_CHANGING_COLOR <= 0;
+        end
+    end
+
+
+end
+
+always @ (posedge SLOW_CLOCK)
 begin
     if(START_NEW_GAME)
     begin
@@ -73,28 +101,6 @@ begin
 			INITIAL_INIT <= 1;
         end
     end
-	
-	// Finite state machine stuff
-    
-    if(~START_NEW_GAME && STARTED_GAME)
-        STARTED_GAME <= 0;
-
-    if(~START_NEW_GAME && ~STARTED_GAME)
-    begin
-        if(COLOR_SEL_SIG && ~CHANGING_COLOR)
-        begin
-            CHANGING_COLOR <= 1;
-            LOCAL_COLOR_SELECTED <= COLOR_SELECTED;
-        end
-        
-        if(CHANGING_COLOR && DONE_CHANGING_COLOR)
-        begin
-            CHANGING_COLOR <= 0;
-            DONE_CHANGING_COLOR <= 0;
-        end
-    end
-
-
 end
 
 // NEW LOCAL REGISTERS/WIRES
