@@ -181,7 +181,7 @@ wire [3:0] COLOR_NUM;
 
 
 
-game_logic logic(
+game_logic logicc(
     .CLOCK(HZ500),
     .SLOW_CLOCK(HZ500),
     .UPDATE_CLOCK(HZ8),
