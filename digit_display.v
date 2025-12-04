@@ -1,0 +1,160 @@
+module digit_display(
+    input wire CLOCK, // 1000 Hz
+    input wire CLOCK_B, // 4 Hz
+	
+	input wire [3:0] COLOR_NUM,
+	input wire [4:0] SIZE,
+	input wire selecting,
+	input wire sORc, // 1 to blink size, 0 to blink color_num
+	input wire MODE,
+	input wire [7:0] TRIES,
+	input wire [7:0] TOTAL_TRIES,
+	
+    output reg [6:0] seg,
+    output reg [3:0] an
+);
+
+integer ZERO = 7'b1000000;
+integer ONE = 7'b1111001;
+integer TWO = 7'b0100100;
+integer THREE = 7'b0110000;
+integer FOUR = 7'b0011001;
+integer FIVE = 7'b0010010;
+integer SIX = 7'b0000010;
+integer SEVEN = 7'b1111000;
+integer EIGHT = 7'b0000000;
+integer NINE = 7'b0010000;
+
+function [6:0] VALUE;
+input [3:0] curr_value;
+begin
+    if(curr_value == 0)
+        VALUE = ZERO;
+    else if(curr_value == 1)
+        VALUE = ONE;
+    else if(curr_value == 2)
+        VALUE = TWO;
+    else if(curr_value == 3)
+        VALUE = THREE;
+    else if(curr_value == 4)
+        VALUE = FOUR;
+    else if(curr_value == 5)
+        VALUE = FIVE;
+    else if(curr_value == 6)
+        VALUE = SIX;
+    else if(curr_value == 7)
+        VALUE = SEVEN;
+    else if(curr_value == 8)
+        VALUE = EIGHT;
+    else
+        VALUE = NINE;
+end
+endfunction
+
+
+reg [3:0] DIG0 = 0;
+reg [3:0] DIG1 = 0;
+reg [3:0] DIG2 = 0;
+reg [3:0] DIG3 = 0;
+
+reg [1:0] digit = 0;
+
+reg blinkCheck = 0;
+
+always @ (*)
+begin
+	if(MODE)
+	begin
+		DIG0 = TOTAL_TRIES % 10;
+		DIG1 = (TOTAL_TRIES - DIG0)/10;
+		DIG2 = TRIES % 10;
+		DIG3 = (TRIES - DIG2)/10;
+	end
+	else
+	begin
+		DIG0 = COLOR_NUM % 10;
+		DIG1 = (COLOR_NUM - DIG0)/10;
+		DIG2 = SIZE % 10;
+		DIG3 = (SIZE - DIG2)/10;
+	end
+end
+
+always @ (posedge CLOCK_B)
+	blinkCheck <= ~blinkCheck;
+	
+always @ (posedge CLOCK)
+begin
+digit <= digit + 1;
+
+
+if(MODE)
+begin
+	if(digit == 0)
+	begin
+		an <= 4'b1110;
+		seg <= VALUE(DIG0);
+	end
+	
+	else if(digit == 1)
+	begin
+		an <= 4'b1101;
+		seg <= VALUE(DIG1);
+	end
+	
+	else if(digit == 2)
+	begin
+		an <= 4'b1011;
+		seg <= VALUE(DIG2); 
+	end
+	
+	else
+	begin
+		an <= 4'b0111;
+		seg <= VALUE(DIG3);
+	end
+end
+else
+begin
+	
+	if(digit == 0 & (sORc || blinkCheck) )
+	begin
+		an <= 4'b1110;
+		seg <= VALUE(DIG0);
+	end
+	else
+		an <= 4'b1111;
+	
+	if(digit == 1 & (sORc || blinkCheck) )
+	begin
+		an <= 4'b1101;
+		seg <= VALUE(DIG1);
+	end
+	else
+		an <= 4'b1111;
+		
+	if(digit == 2 & (~sORc || blinkCheck) )
+	begin
+		an <= 4'b1011;
+		seg <= VALUE(DIG2);
+	end
+	else
+		an <= 4'b1111;
+		
+	if(digit == 3 & (~sORc || blinkCheck) )
+	begin
+		an <= 4'b0111;
+		seg <= VALUE(DIG3);
+	end
+	else
+		an <= 4'b1111;
+end
+
+
+
+
+end
+
+
+
+
+endmodule
