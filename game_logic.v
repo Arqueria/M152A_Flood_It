@@ -26,7 +26,7 @@ module game_logic(
     begin
         if(START_NEW_GAME)
         begin
-            if(~STARTED_GAME)
+            if(~STARTED_GAME && ~CHANGING_COLOR)
             begin
                 if (SIZE == 2) begin
                     for(i=0; i < 2; i = i + 1) for(j=0; j < 2; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
@@ -50,10 +50,10 @@ module game_logic(
             end
         end
         
-        if(~START_NEW_GAME && STARTED_GAME)
+        else if(~START_NEW_GAME && STARTED_GAME)
             STARTED_GAME <= 0;
 
-        if(~START_NEW_GAME && ~STARTED_GAME)
+        else if(~START_NEW_GAME && ~STARTED_GAME)
         begin
             if(COLOR_SEL_SIG && ~CHANGING_COLOR)
             begin

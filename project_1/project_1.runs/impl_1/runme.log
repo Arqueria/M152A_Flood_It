@@ -1,0 +1,153 @@
+
+*** Running vivado
+    with args -log FloodIt.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source FloodIt.tcl -notrace
+
+
+
+****** Vivado v2025.1 (64-bit)
+  **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Thu Dec  4 13:41:19 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source FloodIt.tcl -notrace
+Command: link_design -top FloodIt -part xc7a35tcpg236-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.129 . Memory (MB): peak = 699.242 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1747 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/mappings.xdc]
+Finished Parsing XDC File [C:/Users/rdo15/OneDrive/Desktop/FloodItProjectGithub/M152A_Flood_It/mappings.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 857.859 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 861.891 ; gain = 370.516
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT[0] has multiple drivers: logicc/GAME_BOARD_reg[11][1][0]__0/Q, and logicc/GAME_BOARD_reg[11][1][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT[1] has multiple drivers: logicc/GAME_BOARD_reg[11][1][1]/Q, and logicc/GAME_BOARD_reg[11][1][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT[2] has multiple drivers: logicc/GAME_BOARD_reg[11][1][2]/Q, and logicc/GAME_BOARD_reg[11][1][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_0[0] has multiple drivers: logicc/GAME_BOARD_reg[10][1][0]/Q, and logicc/GAME_BOARD_reg[10][1][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_0[1] has multiple drivers: logicc/GAME_BOARD_reg[10][1][1]/Q, and logicc/GAME_BOARD_reg[10][1][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_0[2] has multiple drivers: logicc/GAME_BOARD_reg[10][1][2]/Q, and logicc/GAME_BOARD_reg[10][1][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_100[0] has multiple drivers: logicc/GAME_BOARD_reg[10][0][0]/Q, and logicc/GAME_BOARD_reg[10][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_100[1] has multiple drivers: logicc/GAME_BOARD_reg[10][0][1]__0/Q, and logicc/GAME_BOARD_reg[10][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_100[2] has multiple drivers: logicc/GAME_BOARD_reg[10][0][2]__0/Q, and logicc/GAME_BOARD_reg[10][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_101[0] has multiple drivers: logicc/GAME_BOARD_reg[9][0][0]/Q, and logicc/GAME_BOARD_reg[9][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_101[1] has multiple drivers: logicc/GAME_BOARD_reg[9][0][1]__0/Q, and logicc/GAME_BOARD_reg[9][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_101[2] has multiple drivers: logicc/GAME_BOARD_reg[9][0][2]/Q, and logicc/GAME_BOARD_reg[9][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_102[0] has multiple drivers: logicc/GAME_BOARD_reg[8][0][0]/Q, and logicc/GAME_BOARD_reg[8][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_102[1] has multiple drivers: logicc/GAME_BOARD_reg[8][0][1]__0/Q, and logicc/GAME_BOARD_reg[8][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_102[2] has multiple drivers: logicc/GAME_BOARD_reg[8][0][2]__0/Q, and logicc/GAME_BOARD_reg[8][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_103[0] has multiple drivers: logicc/GAME_BOARD_reg[15][0][0]/Q, and logicc/GAME_BOARD_reg[15][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_103[1] has multiple drivers: logicc/GAME_BOARD_reg[15][0][1]/Q, and logicc/GAME_BOARD_reg[15][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_103[2] has multiple drivers: logicc/GAME_BOARD_reg[15][0][2]/Q, and logicc/GAME_BOARD_reg[15][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_104[0] has multiple drivers: logicc/GAME_BOARD_reg[14][0][0]__0/Q, and logicc/GAME_BOARD_reg[14][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_104[1] has multiple drivers: logicc/GAME_BOARD_reg[14][0][1]/Q, and logicc/GAME_BOARD_reg[14][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_104[2] has multiple drivers: logicc/GAME_BOARD_reg[14][0][2]__0/Q, and logicc/GAME_BOARD_reg[14][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_105[0] has multiple drivers: logicc/GAME_BOARD_reg[13][0][0]/Q, and logicc/GAME_BOARD_reg[13][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_105[1] has multiple drivers: logicc/GAME_BOARD_reg[13][0][1]/Q, and logicc/GAME_BOARD_reg[13][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_105[2] has multiple drivers: logicc/GAME_BOARD_reg[13][0][2]/Q, and logicc/GAME_BOARD_reg[13][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_106[0] has multiple drivers: logicc/GAME_BOARD_reg[12][0][0]__0/Q, and logicc/GAME_BOARD_reg[12][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_106[1] has multiple drivers: logicc/GAME_BOARD_reg[12][0][1]/Q, and logicc/GAME_BOARD_reg[12][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_106[2] has multiple drivers: logicc/GAME_BOARD_reg[12][0][2]/Q, and logicc/GAME_BOARD_reg[12][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_107[0] has multiple drivers: logicc/GAME_BOARD_reg[7][0][0]/Q, and logicc/GAME_BOARD_reg[7][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_107[1] has multiple drivers: logicc/GAME_BOARD_reg[7][0][1]/Q, and logicc/GAME_BOARD_reg[7][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_107[2] has multiple drivers: logicc/GAME_BOARD_reg[7][0][2]/Q, and logicc/GAME_BOARD_reg[7][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_108[0] has multiple drivers: logicc/GAME_BOARD_reg[6][0][0]/Q, and logicc/GAME_BOARD_reg[6][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_108[1] has multiple drivers: logicc/GAME_BOARD_reg[6][0][1]/Q, and logicc/GAME_BOARD_reg[6][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_108[2] has multiple drivers: logicc/GAME_BOARD_reg[6][0][2]__0/Q, and logicc/GAME_BOARD_reg[6][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_109[0] has multiple drivers: logicc/GAME_BOARD_reg[5][0][0]__0/Q, and logicc/GAME_BOARD_reg[5][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_109[1] has multiple drivers: logicc/GAME_BOARD_reg[5][0][1]__0/Q, and logicc/GAME_BOARD_reg[5][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_109[2] has multiple drivers: logicc/GAME_BOARD_reg[5][0][2]__0/Q, and logicc/GAME_BOARD_reg[5][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_10[0] has multiple drivers: logicc/GAME_BOARD_reg[0][1][0]/Q, and logicc/GAME_BOARD_reg[0][1][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_10[1] has multiple drivers: logicc/GAME_BOARD_reg[0][1][1]__0/Q, and logicc/GAME_BOARD_reg[0][1][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_10[2] has multiple drivers: logicc/GAME_BOARD_reg[0][1][2]__0/Q, and logicc/GAME_BOARD_reg[0][1][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_110[0] has multiple drivers: logicc/GAME_BOARD_reg[4][0][0]__0/Q, and logicc/GAME_BOARD_reg[4][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_110[1] has multiple drivers: logicc/GAME_BOARD_reg[4][0][1]/Q, and logicc/GAME_BOARD_reg[4][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_110[2] has multiple drivers: logicc/GAME_BOARD_reg[4][0][2]/Q, and logicc/GAME_BOARD_reg[4][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_111[0] has multiple drivers: logicc/GAME_BOARD_reg[3][0][0]__0/Q, and logicc/GAME_BOARD_reg[3][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_111[1] has multiple drivers: logicc/GAME_BOARD_reg[3][0][1]/Q, and logicc/GAME_BOARD_reg[3][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_111[2] has multiple drivers: logicc/GAME_BOARD_reg[3][0][2]/Q, and logicc/GAME_BOARD_reg[3][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_112[0] has multiple drivers: logicc/GAME_BOARD_reg[2][0][0]/Q, and logicc/GAME_BOARD_reg[2][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_112[1] has multiple drivers: logicc/GAME_BOARD_reg[2][0][1]/Q, and logicc/GAME_BOARD_reg[2][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_112[2] has multiple drivers: logicc/GAME_BOARD_reg[2][0][2]/Q, and logicc/GAME_BOARD_reg[2][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_113[0] has multiple drivers: logicc/GAME_BOARD_reg[1][0][0]__0/Q, and logicc/GAME_BOARD_reg[1][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_113[1] has multiple drivers: logicc/GAME_BOARD_reg[1][0][1]/Q, and logicc/GAME_BOARD_reg[1][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_113[2] has multiple drivers: logicc/GAME_BOARD_reg[1][0][2]/Q, and logicc/GAME_BOARD_reg[1][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_114[0] has multiple drivers: logicc/GAME_BOARD_reg[0][0][0]/Q, and logicc/GAME_BOARD_reg[0][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_114[1] has multiple drivers: logicc/GAME_BOARD_reg[0][0][1]__0/Q, and logicc/GAME_BOARD_reg[0][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_114[2] has multiple drivers: logicc/GAME_BOARD_reg[0][0][2]__0/Q, and logicc/GAME_BOARD_reg[0][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_115[0] has multiple drivers: logicc/GAME_BOARD_reg[23][0][0]__0/Q, and logicc/GAME_BOARD_reg[23][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_115[1] has multiple drivers: logicc/GAME_BOARD_reg[23][0][1]/Q, and logicc/GAME_BOARD_reg[23][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_115[2] has multiple drivers: logicc/GAME_BOARD_reg[23][0][2]/Q, and logicc/GAME_BOARD_reg[23][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_116[0] has multiple drivers: logicc/GAME_BOARD_reg[22][0][0]__0/Q, and logicc/GAME_BOARD_reg[22][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_116[1] has multiple drivers: logicc/GAME_BOARD_reg[22][0][1]__0/Q, and logicc/GAME_BOARD_reg[22][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_116[2] has multiple drivers: logicc/GAME_BOARD_reg[22][0][2]__0/Q, and logicc/GAME_BOARD_reg[22][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_117[0] has multiple drivers: logicc/GAME_BOARD_reg[21][0][0]__0/Q, and logicc/GAME_BOARD_reg[21][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_117[1] has multiple drivers: logicc/GAME_BOARD_reg[21][0][1]__0/Q, and logicc/GAME_BOARD_reg[21][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_117[2] has multiple drivers: logicc/GAME_BOARD_reg[21][0][2]/Q, and logicc/GAME_BOARD_reg[21][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_118[0] has multiple drivers: logicc/GAME_BOARD_reg[20][0][0]__0/Q, and logicc/GAME_BOARD_reg[20][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_118[1] has multiple drivers: logicc/GAME_BOARD_reg[20][0][1]/Q, and logicc/GAME_BOARD_reg[20][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_118[2] has multiple drivers: logicc/GAME_BOARD_reg[20][0][2]__0/Q, and logicc/GAME_BOARD_reg[20][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_119[0] has multiple drivers: logicc/GAME_BOARD_reg[19][0][0]__0/Q, and logicc/GAME_BOARD_reg[19][0][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_119[1] has multiple drivers: logicc/GAME_BOARD_reg[19][0][1]/Q, and logicc/GAME_BOARD_reg[19][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_119[2] has multiple drivers: logicc/GAME_BOARD_reg[19][0][2]__0/Q, and logicc/GAME_BOARD_reg[19][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_11[0] has multiple drivers: logicc/GAME_BOARD_reg[7][1][0]/Q, and logicc/GAME_BOARD_reg[7][1][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_11[1] has multiple drivers: logicc/GAME_BOARD_reg[7][1][1]/Q, and logicc/GAME_BOARD_reg[7][1][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_11[2] has multiple drivers: logicc/GAME_BOARD_reg[7][1][2]/Q, and logicc/GAME_BOARD_reg[7][1][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_120[0] has multiple drivers: logicc/GAME_BOARD_reg[18][0][0]/Q, and logicc/GAME_BOARD_reg[18][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_120[1] has multiple drivers: logicc/GAME_BOARD_reg[18][0][1]__0/Q, and logicc/GAME_BOARD_reg[18][0][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_120[2] has multiple drivers: logicc/GAME_BOARD_reg[18][0][2]__0/Q, and logicc/GAME_BOARD_reg[18][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_121[0] has multiple drivers: logicc/GAME_BOARD_reg[17][0][0]/Q, and logicc/GAME_BOARD_reg[17][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_121[1] has multiple drivers: logicc/GAME_BOARD_reg[17][0][1]/Q, and logicc/GAME_BOARD_reg[17][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_121[2] has multiple drivers: logicc/GAME_BOARD_reg[17][0][2]__0/Q, and logicc/GAME_BOARD_reg[17][0][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_122[0] has multiple drivers: logicc/GAME_BOARD_reg[16][0][0]/Q, and logicc/GAME_BOARD_reg[16][0][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_122[1] has multiple drivers: logicc/GAME_BOARD_reg[16][0][1]/Q, and logicc/GAME_BOARD_reg[16][0][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_122[2] has multiple drivers: logicc/GAME_BOARD_reg[16][0][2]/Q, and logicc/GAME_BOARD_reg[16][0][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_123[0] has multiple drivers: logicc/GAME_BOARD_reg[15][6][0]/Q, and logicc/GAME_BOARD_reg[15][6][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_123[1] has multiple drivers: logicc/GAME_BOARD_reg[15][6][1]/Q, and logicc/GAME_BOARD_reg[15][6][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_123[2] has multiple drivers: logicc/GAME_BOARD_reg[15][6][2]__0/Q, and logicc/GAME_BOARD_reg[15][6][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_124[0] has multiple drivers: logicc/GAME_BOARD_reg[14][6][0]__0/Q, and logicc/GAME_BOARD_reg[14][6][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_124[1] has multiple drivers: logicc/GAME_BOARD_reg[14][6][1]/Q, and logicc/GAME_BOARD_reg[14][6][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_124[2] has multiple drivers: logicc/GAME_BOARD_reg[14][6][2]/Q, and logicc/GAME_BOARD_reg[14][6][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_125[0] has multiple drivers: logicc/GAME_BOARD_reg[13][6][0]/Q, and logicc/GAME_BOARD_reg[13][6][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_125[1] has multiple drivers: logicc/GAME_BOARD_reg[13][6][1]__0/Q, and logicc/GAME_BOARD_reg[13][6][1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_125[2] has multiple drivers: logicc/GAME_BOARD_reg[13][6][2]__0/Q, and logicc/GAME_BOARD_reg[13][6][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_126[0] has multiple drivers: logicc/GAME_BOARD_reg[12][6][0]__0/Q, and logicc/GAME_BOARD_reg[12][6][0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_126[1] has multiple drivers: logicc/GAME_BOARD_reg[12][6][1]/Q, and logicc/GAME_BOARD_reg[12][6][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_126[2] has multiple drivers: logicc/GAME_BOARD_reg[12][6][2]__0/Q, and logicc/GAME_BOARD_reg[12][6][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_127[0] has multiple drivers: logicc/GAME_BOARD_reg[11][6][0]/Q, and logicc/GAME_BOARD_reg[11][6][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_127[1] has multiple drivers: logicc/GAME_BOARD_reg[11][6][1]/Q, and logicc/GAME_BOARD_reg[11][6][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_127[2] has multiple drivers: logicc/GAME_BOARD_reg[11][6][2]/Q, and logicc/GAME_BOARD_reg[11][6][2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_128[0] has multiple drivers: logicc/GAME_BOARD_reg[10][6][0]/Q, and logicc/GAME_BOARD_reg[10][6][0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_128[1] has multiple drivers: logicc/GAME_BOARD_reg[10][6][1]/Q, and logicc/GAME_BOARD_reg[10][6][1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_128[2] has multiple drivers: logicc/GAME_BOARD_reg[10][6][2]__0/Q, and logicc/GAME_BOARD_reg[10][6][2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net logicc/UNCONN_OUT_129[0] has multiple drivers: logicc/GAME_BOARD_reg[9][6][0]/Q, and logicc/GAME_BOARD_reg[9][6][0]__0/Q.
+INFO: [Common 17-14] Message 'DRC MDRV-1' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Project 1-461] DRC finished with 2028 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado_Tcl 4-78] Error(s) found during DRC. Opt_design not run.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 893.516 ; gain = 31.625
+INFO: [Common 17-83] Releasing license: Implementation
+13 Infos, 0 Warnings, 0 Critical Warnings and 101 Errors encountered.
+opt_design failed
+ERROR: [Common 17-39] 'opt_design' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  4 13:41:33 2025...

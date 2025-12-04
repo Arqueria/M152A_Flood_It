@@ -167,7 +167,6 @@ digit_display digdisp(
 
 game_logic logicc(
     .CLOCK(HZ500),
-    .SLOW_CLOCK(HZ500),
     .UPDATE_CLOCK(HZ8),
     .INITIAL_BOARD(INIT_BOARD),
     .GAME_BOARD(CURR_BOARD),
