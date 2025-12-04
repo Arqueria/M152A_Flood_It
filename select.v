@@ -24,7 +24,7 @@ module select(
 
 	input wire CURRENTLY_CHANGING_COLOR,
 	output reg COLOR_SEL_SIG = 0,
-	output reg [2:0] COLOR_SELECTED = 0
+	output reg [2:0] COLOR_SELECTED = 0,
     output reg BEGIN_GAME = 0,
 	input wire ACK_BEGIN_GAME,
 	output reg [4:0] SIZE = 14,
