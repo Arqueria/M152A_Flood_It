@@ -297,8 +297,7 @@ begin
 	SW6p <= sw[6];
 	SW7p <= sw[7];
 
-
-	if(COLOR_SEL_SIG || CURRENTLY_CHANGING_COLOR)
+    if(COLOR_SEL_SIG || CURRENTLY_CHANGING_COLOR)
 	begin
 		if(CURRENTLY_CHANGING_COLOR)
 			COLOR_SEL_SIG <= 0;
@@ -352,6 +351,22 @@ begin
 		COLOR_SEL_SIG <= 1;
 	end
 end
+else if (INITIALIZE_BOARD)
+begin   
+    TRIES <= 0;
+end
+else if (~INITIALIZED)
+begin
+    SW0p <= sw[0];
+	SW1p <= sw[1];
+	SW2p <= sw[2];
+	SW3p <= sw[3];
+	SW4p <= sw[4];
+	SW5p <= sw[5];
+	SW6p <= sw[6];
+	SW7p <= sw[7];
+end
+
 end
 
 
