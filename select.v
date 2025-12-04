@@ -9,6 +9,8 @@ module select(
     input wire RIGHT,
     input wire CENTER,
 	input wire [15:0] sw,
+
+	input wire INITIALIZED,
 	
 	
 	
@@ -44,6 +46,12 @@ reg ACK_DOWN = 0;
 reg ACK_LEFT = 0;
 reg ACK_RIGHT = 0;
 reg ACK_CENTER = 0;
+
+reg ACK_UPs = 0;
+reg ACK_DOWNs = 0;
+reg ACK_LEFTs = 0;
+reg ACK_RIGHTs = 0;
+reg ACK_CENTERs = 0;
 
 reg UP_HELD = 0;
 reg DOWN_HELD = 0;
@@ -173,51 +181,29 @@ begin
 	
 	if (UP_PREV == 0 && UP == 1)
 		UP_HELD <= 1;
+	else if (UP_PREV == 1 && UP == 0)
+		UP_HELD <= 0;
 
 	if (DOWN_PREV == 0 && DOWN == 1)
 		DOWN_HELD <= 1;
+	else if (DOWN_PREV == 1 && DOWN == 0)
+		DOWN_HELD <= 0;
 
 	if (LEFT_PREV == 0 && LEFT == 1)
 		LEFT_HELD <= 1;
+	else if (LEFT_PREV == 1 && LEFT == 0)
+		LEFT_HELD <= 0;	
 
 	if (RIGHT_PREV == 0 && RIGHT == 1)
 		RIGHT_HELD <= 1;
+	else if (RIGHT_PREV == 1 && RIGHT == 0)
+		RIGHT_HELD <= 0;
 		
 	if (CENTER_PREV == 0 && CENTER == 1)
 		CENTER_HELD <= 1;
-	
-	
-	if (UP_PREV == 1 && UP == 0)
-	begin
-		UP_HELD <= 0;
-		ACK_UP <= 0;
-	end
-		
-	if (DOWN_PREV == 1 && DOWN == 0)
-	begin
-		DOWN_HELD <= 0;
-		ACK_DOWN <= 0;
-	end
-		
-	if (LEFT_PREV == 1 && LEFT == 0)
-	begin
-		LEFT_HELD <= 0;
-		ACK_LEFT <= 0;
-	end
-		
-	if (RIGHT_PREV == 1 && RIGHT == 0)
-	begin
-		RIGHT_HELD <= 0;
-		ACK_RIGHT <= 0;
-	end
-		
-	if (CENTER_PREV == 1 && CENTER == 0)
-	begin
+	else if (CENTER_PREV == 1 && CENTER == 0)
 		CENTER_HELD <= 0;
-	end
 	
-	if (BOARD_READY)
-	   BEGIN_GAME <= 1;
 	
 	if (ACK_BEGIN_GAME)
 	begin
@@ -225,6 +211,8 @@ begin
 	   INITIALIZE_BOARD <= 0;
 	   MODE <= 1;
 	end
+	else if (BOARD_READY)
+	   BEGIN_GAME <= 1;
 	
 	if(MODE)
 	begin
@@ -290,10 +278,11 @@ begin
 	
 	if(CENTER_HELD)
 	begin
-		if(MODE)
-			MODE <= 0;
-		else
-			MODE <= 1;	
+		ACK_CENTER <= 1;
+		if(~ACK_CENTER)
+		begin
+			MODE <= ~MODE;
+		end
 	end
 
 	
