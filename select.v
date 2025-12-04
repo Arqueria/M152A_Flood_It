@@ -33,7 +33,7 @@ module select(
 	
 	
 	
-	output reg MODE = 0,
+	output reg MODE = 1,
 	output reg [7:0] TRIES = 0,
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0
@@ -168,8 +168,7 @@ endfunction
 
 
 
-// saving for leds
-reg [7:0] SAVED_COLOR_NUM = 0;
+
 
 
 
@@ -233,7 +232,7 @@ begin
 	else if (RIGHT_PREV == 0 && RIGHT == 1)
 	begin
 		ACK_RIGHT <= 1;
-		if(~ACK_RIGHT)
+		if(~ACK_RIGHT && INITIALIZED)
 			MODE <= ~MODE;
 	end
 	else 
@@ -264,6 +263,12 @@ begin
 			final_COLOR_NUM <= COLOR_NUM;
 		end
 	end
+	else if (~INITIALIZED)
+	begin
+		INITIALIZE_BOARD <= 1;
+		final_SIZE <= SIZE;
+		final_COLOR_NUM <= COLOR_NUM;
+	end
 	else 
 	begin
 		ACK_CENTER <= 0;
@@ -283,7 +288,7 @@ reg SW7p = 0;
 
 always @ (posedge MASTER_CLOCK)
 begin
-if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME)
+if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME && INITIALIZED)
 begin
 	SW0p <= sw[0];
 	SW1p <= sw[1];

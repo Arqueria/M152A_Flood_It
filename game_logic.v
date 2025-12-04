@@ -21,7 +21,7 @@ module game_logic(
     
 );
 
-reg [2:0] LOCAL_COLOR_SELECTED;
+reg [2:0] LOCAL_COLOR_SELECTED = 0;
 
 reg DONE_CHANGING_COLOR = 0;
 
@@ -34,8 +34,7 @@ begin
 	
 	// Finite state machine stuff
     
-    if(~START_NEW_GAME && STARTED_GAME)
-        STARTED_GAME <= 0;
+    
 
     if(~START_NEW_GAME && ~STARTED_GAME && INITIAL_INIT)
     begin
@@ -48,7 +47,6 @@ begin
         else if(CHANGING_COLOR && DONE_CHANGING_COLOR)
         begin
             CHANGING_COLOR <= 0;
-            DONE_CHANGING_COLOR <= 0;
         end
     end
 
@@ -57,7 +55,12 @@ end
 
 always @ (posedge SLOW_CLOCK)
 begin
-    if(START_NEW_GAME)
+
+    if(~START_NEW_GAME && STARTED_GAME)
+        STARTED_GAME <= 0;
+
+
+    else if(START_NEW_GAME)
     begin
         if(~STARTED_GAME)
         begin
@@ -97,7 +100,6 @@ begin
                 GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
 			
             STARTED_GAME <= 1;
-            CHANGING_COLOR <= 0;
 			INITIAL_INIT <= 1;
         end
     end

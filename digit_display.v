@@ -115,38 +115,49 @@ begin
 end
 else
 begin
+	if(digit == 0)
+	begin
+		if(sORc || blinkCheck)
+		begin
+			an <= 4'b1110;
+			seg <= VALUE(DIG0);
+		end
+		else
+			an <= 4'b1111;
+	end
 	
-	if(digit == 0 & (sORc || blinkCheck) )
+	else if(digit == 1)
 	begin
-		an <= 4'b1110;
-		seg <= VALUE(DIG0);
+		if(sORc || blinkCheck)
+		begin
+			an <= 4'b1101;
+			seg <= VALUE(DIG1);
+		end
+		else
+			an <= 4'b1111;
 	end
-	else
-		an <= 4'b1111;
-	
-	if(digit == 1 & (sORc || blinkCheck) )
-	begin
-		an <= 4'b1101;
-		seg <= VALUE(DIG1);
-	end
-	else
-		an <= 4'b1111;
 		
-	if(digit == 2 & (~sORc || blinkCheck) )
+	else if(digit == 2)
 	begin
-		an <= 4'b1011;
-		seg <= VALUE(DIG2);
+		if(~sORc || blinkCheck) 
+		begin
+			an <= 4'b1011;
+			seg <= VALUE(DIG2);
+		end
+		else
+			an <= 4'b1111;
 	end
-	else
-		an <= 4'b1111;
 		
-	if(digit == 3 & (~sORc || blinkCheck) )
+	else if(digit == 3)
 	begin
-		an <= 4'b0111;
-		seg <= VALUE(DIG3);
+		if(~sORc || blinkCheck)
+		begin
+			an <= 4'b0111;
+			seg <= VALUE(DIG3);
+		end
+		else
+			an <= 4'b1111;
 	end
-	else
-		an <= 4'b1111;
 end
 
 
