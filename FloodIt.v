@@ -123,28 +123,48 @@ select selector(
     .sORc(sORc)
 );
 
-rand random_gen(
-	.FAST_CLOCK(),
-	.SLOW_CLOCK(),
-	.seed(),
-	.NEW_BOARD(),
-	.SIZE(),
-	.COLOR_NUM(),
-	.initial_BOARD(),
-	.READY()
+
+// Interconnects between selector and rand
+wire INIT_NEW_BOARD;
+wire NEW_BOARD_READY;
+
+wire [2:0] INIT_BOARD [25:0][25:0];
+wire [2:0] CURR_BOARD [25:0][25:0];
+
+
+generate_board random_gen(
+	.CLOCK(HZ500),
+	.seed(led),
+	.NEW_BOARD(INIT_NEW_BOARD),
+	.SIZE(SIZE),
+	.COLOR_NUM(COLOR_NUM),
+	.initial_BOARD(INIT_BOARD),
+	.READY(NEW_BOARD_READY)
 );
 
+
+
+// Interconnects between selector and digit and led displays
+wire MODE;
+wire [7:0] TRIES;
+wire [7:0] TOTAL_TRIES;
+wire [4:0] final_SIZE;
+wire [3:0] final_COLOR_NUM;
+wire sORc;
+
+
+
 digit_display digdisp(
-    .CLOCK(),
-    .CLOCK_B(),
-	.COLOR_NUM(),
-	.SIZE(),
-	.sORc(),
-	.MODE(),
-	.TRIES(),
-	.TOTAL_TRIES(),
-    .seg(),
-    .an()
+    .CLOCK(HZ1000),
+    .CLOCK_B(HZ4),
+	.COLOR_NUM(final_COLOR_NUM),
+	.SIZE(final_SIZE),
+	.sORc(sORc),
+	.MODE(MODE),
+	.TRIES(TRIES),
+	.TOTAL_TRIES(TOTAL_TRIES),
+    .seg(seg),
+    .an(an)
 
 );
 
@@ -161,11 +181,11 @@ wire [3:0] COLOR_NUM;
 
 
 game_logic logic(
-    .CLOCK(),
-    .SLOW_CLOCK(),
-    .UPDATE_CLOCK(),
-    .INITIAL_BOARD(),
-    .GAME_BOARD(),
+    .CLOCK(HZ500),
+    .SLOW_CLOCK(HZ500),
+    .UPDATE_CLOCK(HZ8),
+    .INITIAL_BOARD(INIT_BOARD),
+    .GAME_BOARD(CURR_BOARD),
     .SIZE(SIZE),
     .COLOR_NUM(COLOR_NUM),
     .COLOR_SELECTED(COLOR_SELECTED),
@@ -178,19 +198,19 @@ game_logic logic(
 
 displayVGA display(
     .CLOCK(MHZ25),
-    .BOARD(),
-    .SIZE(),
-    .INITIALIZED(),
-    .vgaRed(),
-    .vgaBlue(),
-    .vgaGreen(),
-    .Hsync(),
-    .Vsync()
+    .BOARD(CURR_BOARD),
+    .SIZE(final_SIZE),
+    .INITIALIZED(INITIAL_INITIALIZATION),
+    .vgaRed(vgaRed),
+    .vgaBlue(vgaBlue),
+    .vgaGreen(vgaGreen),
+    .Hsync(Hsync),
+    .Vsync(Vsync)
 );
 
 leds_set LEDS(
-    .COLOR_NUM(),
-    .led()
+    .COLOR_NUM(final_COLOR_NUM),
+    .led(led)
 );
 
 endmodule

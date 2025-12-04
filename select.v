@@ -15,13 +15,14 @@ module select(
 	
     output reg INITIALIZE_BOARD = 0,
 	input wire BOARD_READY,
-	
+
 	
 	
  	// Interactions with game logic
 	
 	input wire INITIALIZED,
 
+	input wire CURRENTLY_CHANGING_COLOR,
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0
     output reg BEGIN_GAME = 0,

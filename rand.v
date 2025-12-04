@@ -1,6 +1,5 @@
 module generate_board(
-	input wire FAST_CLOCK,
-	input wire SLOW_CLOCK,
+	input wire CLOCK,
 	
 
 	
