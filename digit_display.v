@@ -4,7 +4,6 @@ module digit_display(
 	
 	input wire [3:0] COLOR_NUM,
 	input wire [4:0] SIZE,
-	input wire selecting,
 	input wire sORc, // 1 to blink size, 0 to blink color_num
 	input wire MODE,
 	input wire [7:0] TRIES,

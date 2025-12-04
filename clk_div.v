@@ -6,6 +6,8 @@ module clk_div(
     output reg HZ8 = 0,
     output reg HZ500 = 0,
     output reg HZ1000 = 0,
+    output reg HZ5K = 0,
+    output reg HZ10K = 0,
     output reg MHZ25 = 0,
     output reg MHZ50 = 0
 );
@@ -16,6 +18,8 @@ integer HZ5_COUNT = 0;
 integer HZ8_COUNT = 0;
 integer HZ500_COUNT = 0;
 integer HZ1000_COUNT = 0;
+integer HZ5K_COUNT = 0;
+integer HZ10K_COUNT = 0;
 integer MHZ25_COUNT = 0;
 integer MHZ50_COUNT = 0;
 
@@ -82,6 +86,30 @@ begin
             HZ1000_COUNT <= 0;
             HZ1000 <= ~HZ1000;
         end
+
+
+    if(HZ5K_COUNT < 10_000 - 1)
+        begin
+            HZ5K_COUNT <= HZ5K_COUNT + 1;
+        end
+    else
+        begin
+            HZ5K_COUNT <= 0;
+            HZ5K <= ~HZ5K;
+        end
+
+    
+
+    if(HZ10K_COUNT < 5_000 - 1)
+        begin
+            HZ10K_COUNT <= HZ10K_COUNT + 1;
+        end
+    else
+        begin
+            HZ10K_COUNT <= 0;
+            HZ10K <= ~HZ10K;
+        end
+
 
     if(MHZ25_COUNT < 2 - 1)
         begin

@@ -1,8 +1,5 @@
 module select(
-    input wire DISPLAY_CLOCK, // 1000 Hz
-	input wire SLOW_MASTER_CLOCK, // 1 MHz
     input wire MASTER_CLOCK, // 100 MHz
-    input wire BLINK_CLOCK, // 4 Hz
     input wire UP,
     input wire DOWN,
     input wire LEFT,
@@ -10,34 +7,35 @@ module select(
     input wire CENTER,
 	input wire [15:0] sw,
 
+	
+	
+	
+	
+	// Interactions with rand
+	
+    output reg INITIALIZE_BOARD = 0,
+	input wire BOARD_READY,
+	
+	
+	
+ 	// Interactions with game logic
+	
 	input wire INITIALIZED,
-	
-	
-	
-    output wire [6:0] seg,
-    output wire [3:0] an,
-    output wire [15:0] led,
-    
-    output reg BEGIN_GAME = 0,
-	input wire ACK_BEGIN_GAME,
-	
-	
-	
-	output reg [4:0] SIZE = 14,
-	output reg [3:0] COLOR_NUM = 6,
-	
-	
-	output reg [4:0] final_SIZE = 14,
-	output reg [3:0] final_COLOR_NUM = 6, // for display to display correct digits
-	
-	
-	
-	
-	output reg MODE = 1,
-	output reg [7:0] TRIES = 0,
+
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0
-    
+    output reg BEGIN_GAME = 0,
+	input wire ACK_BEGIN_GAME,
+	output reg [4:0] SIZE = 14,
+	output reg [3:0] COLOR_NUM = 6,
+
+	// wires for digit display and leds
+	output reg MODE = 1,
+	output reg [7:0] TRIES = 0,
+	output reg [7:0] TOTAL_TRIES = 25,
+    output reg [4:0] final_SIZE = 14,
+	output reg [3:0] final_COLOR_NUM = 6,
+	output reg sORc = 0 // 0 selects COLOR_NUM, 1 selects SIZE
 
 
 );
@@ -60,7 +58,6 @@ reg LEFT_HELD = 0;
 reg RIGHT_HELD = 0;
 reg CENTER_HELD = 0;
 
-reg sORc = 0; // 0 selects COLOR_NUM, 1 selects SIZE
 
 reg UP_PREV = 0;
 reg DOWN_PREV = 0;
@@ -68,11 +65,11 @@ reg LEFT_PREV = 0;
 reg RIGHT_PREV = 0;
 reg CENTER_PREV = 0;
 
-reg INITIALIZE_BOARD = 0;
-wire BOARD_READY;
 
-reg [7:0] TOTAL_TRIES = 25;
-reg [7:0] TRIES = 0;
+
+
+
+
 
 
 function [7:0] getTTries;
