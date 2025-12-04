@@ -35,11 +35,12 @@ reg setting = 0;
 
 
 
-always @ (posedge SLOW_CLOCK)
+always @ (posedge CLOCK)
 begin
 	if(NEW_BOARD && ~running && ~READY)
 	begin
 		running <= 1;
+		setting <= 0;
 		
 		if(seed)
 			R <= seed;
@@ -55,64 +56,53 @@ begin
 	begin
 		READY <= 0;
 	end
-end
-
-
-
-always @ (posedge FAST_CLOCK)
-begin
-
-if ( ROW == local_SIZE )
-begin	
-	running <= 0;
-	READY <= 1;
-end
-
-
-else if(running)
-begin
-if(~setting)
-begin
-	R <= { R[15:1] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
-	setting <= 1;
-	
-	if ( local_COLOR_NUM == 3 )
-		CURR_COL <= R % 3;
-
-	else if ( local_COLOR_NUM == 4 )
-		CURR_COL <= R % 4;
-	
-	else if ( local_COLOR_NUM == 5 )
-		CURR_COL <= R % 5;
-	
-	else if ( local_COLOR_NUM == 6 )
-		CURR_COL <= R % 6;
-	
-	else if ( local_COLOR_NUM == 7 )
-		CURR_COL <= R % 7;
-	
-	else if ( local_COLOR_NUM == 8 )
-		CURR_COL <= R % 8;
-	
-	
-end
-else if (setting)
-begin
-	setting <= 0;
-	initial_BOARD[ROW][COL] <= CURR_COL;
-	if ( COL + 1 == local_SIZE )
+	else if ( ROW == local_SIZE )
+	begin	
+		running <= 0;
+		READY <= 1;
+	end 
+	else if(running)
 	begin
-		COL <= 0;
-		ROW <= ROW + 1;
+		setting <= ~setting;
+		if(~setting)
+		begin
+			R <= { R[15:1] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
+		
+			
+			if ( local_COLOR_NUM == 3 )
+				CURR_COL <= R % 3;
+
+			else if ( local_COLOR_NUM == 4 )
+				CURR_COL <= R % 4;
+			
+			else if ( local_COLOR_NUM == 5 )
+				CURR_COL <= R % 5;
+			
+			else if ( local_COLOR_NUM == 6 )
+				CURR_COL <= R % 6;
+			
+			else if ( local_COLOR_NUM == 7 )
+				CURR_COL <= R % 7;
+			
+			else if ( local_COLOR_NUM == 8 )
+				CURR_COL <= R % 8;
+		end
+		else if (setting)
+		begin
+
+			initial_BOARD[ROW][COL] <= CURR_COL;
+			if ( COL + 1 == local_SIZE )
+			begin
+				COL <= 0;
+				ROW <= ROW + 1;
+			end
+			else
+				COL <= COL + 1;
+		end
 	end
-	else
-		COL <= COL + 1;
-
 end
 
-	
-end	
-end
+
 
 
 

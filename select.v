@@ -193,7 +193,7 @@ begin
 				COLOR_NUM <= COLOR_NUM_CHANGE(0);
 		end		
 	end
-	else if (UP_PREV == 1 && UP == 0)
+	else 
 	begin
 		ACK_UP <= 0;
 	end
@@ -209,7 +209,7 @@ begin
 				COLOR_NUM <= COLOR_NUM_CHANGE(1);		
 		end
 	end
-	else if (DOWN_PREV == 1 && DOWN == 0)
+	else 
 	begin
 		ACK_DOWN <= 0;
 	end
@@ -220,7 +220,7 @@ begin
         if(~ACK_LEFT && ~MODE)
             sORc <= ~sORc;
 	end
-	else if (LEFT_PREV == 1 && LEFT == 0)
+	else 
 	begin
 		ACK_LEFT <= 0;
 	end
@@ -236,29 +236,35 @@ begin
 		if(~ACK_RIGHT)
 			MODE <= ~MODE;
 	end
-	else if (RIGHT_PREV == 1 && RIGHT == 0)
+	else 
 	begin
 		ACK_RIGHT <= 0;
 	end
 
-	if(BOARD_READY == 1)
+	if(INITIALIZE_BOARD == 1)
 	begin
-		BEGIN_GAME <= 1;
+		if(BOARD_READY == 1)
+		begin
+			INITIALIZE_BOARD <= 0;
+			BEGIN_GAME <= 1;
+		end
 	end
-	else if(ACK_BEGIN_GAME)
+	else if(BEGIN_GAME)
 	begin
-		INITIALIZE_BOARD <= 0;
-		BEGIN_GAME <= 0;
+		if(ACK_BEGIN_GAME)
+			BEGIN_GAME <= 0;
 	end
 	else if (CENTER_PREV == 0 && CENTER == 1)
 	begin
 		ACK_CENTER <= 1;
-		if(~ACK_RIGHT && ~MODE && ~BEGIN_GAME)
+		if(~ACK_RIGHT && ~MODE)
 		begin
 			INITIALIZE_BOARD <= 1;
+			final_SIZE <= SIZE;
+			final_COLOR_NUM <= COLOR_NUM;
 		end
 	end
-	else if (CENTER_PREV == 1 && CENTER == 0)
+	else 
 	begin
 		ACK_CENTER <= 0;
 	end	
@@ -296,41 +302,49 @@ begin
 	end
 	else if(SW0p == ~sw[0])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 0;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW1p == ~sw[1])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 1;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW2p == ~sw[2])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 2;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW3p == ~sw[3])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 3;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW4p == ~sw[4])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 4;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW5p == ~sw[5])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 5;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW6p == ~sw[6])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 6;
 		COLOR_SEL_SIG <= 1;
 	end
 	else if(SW7p == ~sw[7])
 	begin
+		TRIES <= TRIES + 1;
 		COLOR_SELECTED <= 7;
 		COLOR_SEL_SIG <= 1;
 	end
