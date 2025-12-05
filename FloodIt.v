@@ -69,8 +69,8 @@ btn_deb debouncer(
 );
 
 // Interconnects between selector and rand
-wire INIT_NEW_BOARD;
-wire NEW_BOARD_READY;
+wire INITIALIZE_BOARD;
+wire BOARD_READY;
 
 // Interconnects between selector and game logic
 wire INITIAL_INITIALIZATION;
@@ -102,8 +102,8 @@ select selector(
 	.sw(sw),
 
     // rand
-    .INITIALIZE_BOARD(INIT_NEW_BOARD),
-    .BOARD_READY(NEW_BOARD_READY),
+    .INITIALIZE_BOARD(INITIALIZE_BOARD),
+    .BOARD_READY(BOARD_READY),
 
     // game logic
     .INITIALIZED(INITIAL_INITIALIZATION),
@@ -133,11 +133,11 @@ wire [2:0] CURR_BOARD [25:0][25:0];
 generate_board random_gen(
 	.CLOCK(HZ500),
 	.seed(led),
-	.NEW_BOARD(INIT_NEW_BOARD),
+	.INITIALIZE_BOARD(INITIALIZE_BOARD),
 	.SIZE(SIZE),
 	.COLOR_NUM(COLOR_NUM),
 	.initial_BOARD(INIT_BOARD),
-	.READY(NEW_BOARD_READY)
+	.READY(BOARD_READY)
 );
 
 

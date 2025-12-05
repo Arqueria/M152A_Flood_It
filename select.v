@@ -226,7 +226,15 @@ begin
 		ACK_RIGHT <= 0;
 	end
 
-	if(INITIALIZE_BOARD == 1)
+
+
+	if(~INITIALIZED)
+	begin
+		INITIALIZE_BOARD <= 1;
+		final_SIZE <= SIZE;
+		final_COLOR_NUM <= COLOR_NUM;
+	end
+	else if(INITIALIZE_BOARD == 1)
 	begin
 		if(BOARD_READY == 1)
 		begin
@@ -250,13 +258,8 @@ begin
 		    TOTAL_TRIES <= getTTries(SIZE, COLOR_NUM);
 		end
 	end
-	else if (~INITIALIZED)
-	begin
-		INITIALIZE_BOARD <= 1;
-		final_SIZE <= SIZE;
-		final_COLOR_NUM <= COLOR_NUM;
 
-	end
+
 	else 
 	begin
 		ACK_CENTER <= 0;

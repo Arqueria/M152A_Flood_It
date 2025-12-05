@@ -49,7 +49,7 @@ module displayVGA(
         dynamic_offset_y = vbp + ((480 - board_height_px) >> 1);
     end
 
-    wire [10:0] pixel_x;
+    wire [10:0]      pixel_x;
     wire [10:0] pixel_y;
     assign pixel_x = hc; 
     assign pixel_y = vc;
