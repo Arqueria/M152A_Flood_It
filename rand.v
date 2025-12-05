@@ -48,27 +48,27 @@ begin
 	begin
 
 
-		R <= { R[15:1] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
+		R <= { R[14:0] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
 	
-		CURR_COLOR <= R[1:0];
-		
-		//if ( final_COLOR_NUM == 3 )
-		//	CURR_COLOR <= R % 3;
 
-		//else if ( final_COLOR_NUM == 4 )
-		//	CURR_COLOR <= R % 4;
 		
-		//else if ( final_COLOR_NUM == 5 )
-		//	CURR_COLOR <= R % 5;
+		if ( final_COLOR_NUM == 3 )
+			CURR_COLOR <= R % 3;
+
+		else if ( final_COLOR_NUM == 4 )
+			CURR_COLOR <= R % 4;
+	
+		else if ( final_COLOR_NUM == 5 )
+			CURR_COLOR <= R % 5;
+	
+		else if ( final_COLOR_NUM == 6 )
+			CURR_COLOR <= R % 6;
 		
-		//else if ( final_COLOR_NUM == 6 )
-		//	CURR_COLOR <= R % 6;
-		
-//	else if ( final_COLOR_NUM == 7 )
-//		CURR_COLOR <= R % 7;
-//	
-//	else if ( final_COLOR_NUM == 8 )
-//		CURR_COLOR <= R % 8;
+		else if ( final_COLOR_NUM == 7 )
+			CURR_COLOR <= R % 7;
+
+		else if ( final_COLOR_NUM == 8 )
+			CURR_COLOR <= R % 8;
 
 
 

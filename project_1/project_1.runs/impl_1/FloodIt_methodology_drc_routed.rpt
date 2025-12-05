@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Dec  5 10:38:49 2025
+| Date         : Fri Dec  5 11:33:51 2025
 | Host         : computerUwU running 64-bit major release  (build 9200)
 | Command      : report_methodology -file FloodIt_methodology_drc_routed.rpt -pb FloodIt_methodology_drc_routed.pb -rpx FloodIt_methodology_drc_routed.rpx
 | Design       : FloodIt
@@ -23,12 +23,14 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max checks: <unlimited>
-             Checks found: 1000
-+-----------+------------------+-----------------------------+--------+
-| Rule      | Severity         | Description                 | Checks |
-+-----------+------------------+-----------------------------+--------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell | 1000   |
-+-----------+------------------+-----------------------------+--------+
+             Checks found: 1006
++-----------+------------------+--------------------------------+--------+
+| Rule      | Severity         | Description                    | Checks |
++-----------+------------------+--------------------------------+--------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 1000   |
+| TIMING-20 | Warning          | Non-clocked latch              | 5      |
+| LATCH-1   | Advisory         | Existing latches in the design | 1      |
++-----------+------------------+--------------------------------+--------+
 
 2. REPORT DETAILS
 -----------------
@@ -5030,6 +5032,36 @@ Related violations: <none>
 TIMING-17#1000 Critical Warning
 Non-clocked sequential cell  
 The clock pin game_logic_module/GAME_BOARD_reg[20][15][0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch leds_set_module/led_reg[3] cannot be properly analyzed as its control pin leds_set_module/led_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch leds_set_module/led_reg[4] cannot be properly analyzed as its control pin leds_set_module/led_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch leds_set_module/led_reg[5] cannot be properly analyzed as its control pin leds_set_module/led_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch leds_set_module/led_reg[6] cannot be properly analyzed as its control pin leds_set_module/led_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch leds_set_module/led_reg[7] cannot be properly analyzed as its control pin leds_set_module/led_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 5 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

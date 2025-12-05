@@ -42,7 +42,7 @@ module game_logic(
     // --- ENABLE SIGNAL / TIMER ---
     // We use this to slow down the 100MHz clock to create an animation effect
     reg [19:0] anim_timer = 0; 
-    localparam ANIM_SPEED = 10; // Adjust this value to change animation speed
+    localparam ANIM_SPEED = 2; // Adjust this value to change animation speed
 
     // --- SINGLE DRIVER BLOCK ---
     always @ (posedge CLOCK)

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Dec  5 10:38:55 2025
+| Date         : Fri Dec  5 11:33:59 2025
 | Host         : computerUwU running 64-bit major release  (build 9200)
 | Command      : report_clock_utilization -file FloodIt_clock_utilization_routed.rpt
 | Design       : FloodIt
@@ -52,9 +52,9 @@ Table of Contents
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+-------------+----------------------+---------------+
 | Global Id | Source Id | Driver Type/Pin | Constraint | Site          | Clock Region | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock       | Driver Pin           | Net           |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+-------------+----------------------+---------------+
-| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 4 |        6141 |               0 |              |             | HZ500_BUFG_inst/O    | HZ500_BUFG    |
+| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 4 |        6817 |               0 |              |             | HZ500_BUFG_inst/O    | HZ500_BUFG    |
 | g1        | src1      | BUFG/O          | None       | BUFGCTRL_X0Y1 | n/a          |                 4 |         165 |               0 |       10.000 | sys_clk_pin | clk_IBUF_BUFG_inst/O | clk_IBUF_BUFG |
-| g2        | src2      | BUFG/O          | None       | BUFGCTRL_X0Y2 | n/a          |                 3 |          76 |               0 |              |             | HZ5K_BUFG_inst/O     | HZ5K_BUFG     |
+| g2        | src2      | BUFG/O          | None       | BUFGCTRL_X0Y2 | n/a          |                 4 |          77 |               0 |              |             | HZ5K_BUFG_inst/O     | HZ5K_BUFG     |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+-------------+----------------------+---------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -66,9 +66,9 @@ Table of Contents
 +-----------+-----------+-----------------+------------+--------------+--------------+-------------+-----------------+---------------------+--------------+--------------------+--------------+
 | Source Id | Global Id | Driver Type/Pin | Constraint | Site         | Clock Region | Clock Loads | Non-Clock Loads | Source Clock Period | Source Clock | Driver Pin         | Net          |
 +-----------+-----------+-----------------+------------+--------------+--------------+-------------+-----------------+---------------------+--------------+--------------------+--------------+
-| src0      | g0        | FDRE/Q          | None       | SLICE_X38Y46 | X1Y0         |           1 |               1 |                     |              | clocks/HZ500_reg/Q | clocks/HZ500 |
+| src0      | g0        | FDRE/Q          | None       | SLICE_X33Y48 | X0Y0         |           1 |               1 |                     |              | clocks/HZ500_reg/Q | clocks/HZ500 |
 | src1      | g1        | IBUF/O          | IOB_X1Y26  | IOB_X1Y26    | X1Y0         |           1 |               0 |              10.000 | sys_clk_pin  | clk_IBUF_inst/O    | clk_IBUF     |
-| src2      | g2        | FDRE/Q          | None       | SLICE_X33Y46 | X0Y0         |           1 |               1 |                     |              | clocks/HZ5K_reg/Q  | clocks/HZ5K  |
+| src2      | g2        | FDRE/Q          | None       | SLICE_X36Y46 | X1Y0         |           1 |               1 |                     |              | clocks/HZ5K_reg/Q  | clocks/HZ5K  |
 +-----------+-----------+-----------------+------------+--------------+--------------+-------------+-----------------+---------------------+--------------+--------------------+--------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -80,9 +80,9 @@ Table of Contents
 +----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+---------------------+----------------+
 | Local Id | Driver Type/Pin | Constraint | Site/BEL         | Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock | Driver Pin          | Net            |
 +----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+---------------------+----------------+
-| 0        | FDRE/Q          | None       | SLICE_X1Y86/AFF  | X0Y1         |          20 |               1 |              |       | clocks/MHZ25_reg/Q  | clocks/MHZ25   |
-| 1        | FDRE/Q          | None       | SLICE_X38Y66/AFF | X1Y1         |          13 |               1 |              |       | clocks/HZ1000_reg/Q | clocks/HZ1000  |
-| 2        | FDRE/Q          | None       | SLICE_X41Y62/AFF | X1Y1         |           1 |               1 |              |       | clocks/HZ4_reg/Q    | clocks/CLOCK_B |
+| 0        | FDRE/Q          | None       | SLICE_X49Y77/AFF | X1Y1         |          20 |               1 |              |       | clocks/MHZ25_reg/Q  | clocks/MHZ25   |
+| 1        | FDRE/Q          | None       | SLICE_X39Y72/AFF | X1Y1         |          13 |               1 |              |       | clocks/HZ1000_reg/Q | clocks/HZ1000  |
+| 2        | FDRE/Q          | None       | SLICE_X46Y67/AFF | X1Y1         |           1 |               1 |              |       | clocks/HZ4_reg/Q    | clocks/CLOCK_B |
 +----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+---------------------+----------------+
 * Local Clocks in this context represents only clocks driven by non-global buffers
 ** Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
@@ -97,12 +97,12 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
-| X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   25 |  1200 |   24 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
-| X1Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   37 |  1500 |    1 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
-| X0Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 1081 |  1200 |  367 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
-| X1Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  776 |  1500 |  203 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
-| X0Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 3252 |  1800 |  755 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
-| X1Y2              |    1 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     4 |    0 |     1 |    0 |     0 |    0 |     0 | 1245 |   950 |  335 |   300 |    0 |    10 |    0 |     5 |    0 |    20 |
+| X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    5 |  1200 |    0 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   13 |  1500 |    0 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
+| X0Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  594 |  1200 |  182 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 1058 |  1500 |  299 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
+| X0Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 3425 |  1800 |  740 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y2              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     4 |    0 |     1 |    0 |     0 |    0 |     0 | 1998 |   950 |  696 |   300 |    0 |    10 |    0 |     5 |    0 |    20 |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 * Global Clock column represents track count; while other columns represents cell counts
 
@@ -126,7 +126,7 @@ All Modules
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+------------+
 | Global Id | Driver Type/Pin | Driver Region (D) | Clock | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net        |
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+------------+
-| g0        | BUFG/O          | n/a               |       |             |               |        6141 |        0 |              0 |        0 | HZ500_BUFG |
+| g0        | BUFG/O          | n/a               |       |             |               |        6817 |        0 |              0 |        0 | HZ500_BUFG |
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+------------+
 * Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
 ** IO Loads column represents load cell count of IO types
@@ -137,8 +137,8 @@ All Modules
 +----+-------+-------+-----------------------+
 |    | X0    | X1    | HORIZONTAL PROG DELAY |
 +----+-------+-------+-----------------------+
-| Y2 |  3241 |  1245 |                     0 |
-| Y1 |   977 |   678 |                     0 |
+| Y2 |  3415 |  1995 |                     0 |
+| Y1 |   529 |   878 |                     0 |
 | Y0 |     0 |     0 |                     - |
 +----+-------+-------+-----------------------+
 
@@ -157,13 +157,13 @@ All Modules
 **** GT Loads column represents load cell count of GT types
 
 
-+----+-----+-----+-----------------------+
-|    | X0  | X1  | HORIZONTAL PROG DELAY |
-+----+-----+-----+-----------------------+
-| Y2 |   0 |   0 |                     - |
-| Y1 |  41 |  62 |                     0 |
-| Y0 |  25 |  37 |                     0 |
-+----+-----+-----+-----------------------+
++----+-----+------+-----------------------+
+|    | X0  | X1   | HORIZONTAL PROG DELAY |
++----+-----+------+-----------------------+
+| Y2 |   0 |    0 |                     - |
+| Y1 |  28 |  119 |                     0 |
+| Y0 |   5 |   13 |                     0 |
++----+-----+------+-----------------------+
 
 
 9. Device Cell Placement Summary for Global Clock g2
@@ -172,7 +172,7 @@ All Modules
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+-----------+
 | Global Id | Driver Type/Pin | Driver Region (D) | Clock | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net       |
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+-----------+
-| g2        | BUFG/O          | n/a               |       |             |               |          76 |        0 |              0 |        0 | HZ5K_BUFG |
+| g2        | BUFG/O          | n/a               |       |             |               |          77 |        0 |              0 |        0 | HZ5K_BUFG |
 +-----------+-----------------+-------------------+-------+-------------+---------------+-------------+----------+----------------+----------+-----------+
 * Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
 ** IO Loads column represents load cell count of IO types
@@ -183,8 +183,8 @@ All Modules
 +----+-----+-----+-----------------------+
 |    | X0  | X1  | HORIZONTAL PROG DELAY |
 +----+-----+-----+-----------------------+
-| Y2 |  11 |   0 |                     0 |
-| Y1 |  42 |  23 |                     0 |
+| Y2 |  10 |   3 |                     0 |
+| Y1 |  37 |  27 |                     0 |
 | Y0 |   0 |   0 |                     - |
 +----+-----+-----+-----------------------+
 
@@ -195,7 +195,7 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net           |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
-| g1        | n/a   | BUFG/O          | None       |          25 |               0 | 25 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
+| g1        | n/a   | BUFG/O          | None       |           5 |               0 |  5 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -208,7 +208,7 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net           |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
-| g1        | n/a   | BUFG/O          | None       |          37 |               0 | 37 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
+| g1        | n/a   | BUFG/O          | None       |          13 |               0 | 13 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -221,9 +221,9 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net           |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
-| g0        | n/a   | BUFG/O          | None       |         977 |               0 | 977 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG    |
-| g1        | n/a   | BUFG/O          | None       |          41 |               0 |  41 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
-| g2        | n/a   | BUFG/O          | None       |          42 |               0 |  42 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG     |
+| g0        | n/a   | BUFG/O          | None       |         529 |               0 | 529 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG    |
+| g1        | n/a   | BUFG/O          | None       |          28 |               0 |  28 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
+| g2        | n/a   | BUFG/O          | None       |          37 |               0 |  37 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG     |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -236,9 +236,9 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net           |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
-| g0        | n/a   | BUFG/O          | None       |         678 |               0 | 678 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG    |
-| g1        | n/a   | BUFG/O          | None       |          62 |               0 |  62 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
-| g2        | n/a   | BUFG/O          | None       |          23 |               0 |  23 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG     |
+| g0        | n/a   | BUFG/O          | None       |         878 |               0 | 878 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG    |
+| g1        | n/a   | BUFG/O          | None       |         119 |               0 | 119 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_IBUF_BUFG |
+| g2        | n/a   | BUFG/O          | None       |          27 |               0 |  27 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG     |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -251,8 +251,8 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net        |
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
-| g0        | n/a   | BUFG/O          | None       |        3241 |               0 | 3241 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG |
-| g2        | n/a   | BUFG/O          | None       |          11 |               0 |   11 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG  |
+| g0        | n/a   | BUFG/O          | None       |        3415 |               0 | 3415 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG |
+| g2        | n/a   | BUFG/O          | None       |          10 |               0 |   10 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -265,7 +265,8 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net        |
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
-| g0        | n/a   | BUFG/O          | None       |        1245 |               0 | 1245 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG |
+| g0        | n/a   | BUFG/O          | None       |        1995 |               0 | 1995 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ500_BUFG |
+| g2        | n/a   | BUFG/O          | None       |           3 |               0 |    3 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | HZ5K_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -294,7 +295,7 @@ resize_pblock [get_pblocks {CLKAG_clk_IBUF_BUFG}] -add {CLOCKREGION_X0Y0:CLOCKRE
 #startgroup
 create_pblock {CLKAG_HZ5K_BUFG}
 add_cells_to_pblock [get_pblocks  {CLKAG_HZ5K_BUFG}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="HZ5K_BUFG"}]]]
-resize_pblock [get_pblocks {CLKAG_HZ5K_BUFG}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
+resize_pblock [get_pblocks {CLKAG_HZ5K_BUFG}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1 CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
 #endgroup
 
 # Clock net "HZ500_BUFG" driven by instance "HZ500_BUFG_inst" located at site "BUFGCTRL_X0Y0"

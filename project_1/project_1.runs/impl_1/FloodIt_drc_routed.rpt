@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Dec  5 10:38:44 2025
+| Date         : Fri Dec  5 11:33:42 2025
 | Host         : computerUwU running 64-bit major release  (build 9200)
 | Command      : report_drc -file FloodIt_drc_routed.rpt -pb FloodIt_drc_routed.pb -rpx FloodIt_drc_routed.rpx
 | Design       : FloodIt
@@ -24,12 +24,38 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
-             Checks found: 0
-+------+----------+-------------+--------+
-| Rule | Severity | Description | Checks |
-+------+----------+-------------+--------+
-+------+----------+-------------+--------+
+             Checks found: 5
++----------+----------+-------------------+--------+
+| Rule     | Severity | Description       | Checks |
++----------+----------+-------------------+--------+
+| PDRC-153 | Warning  | Gated clock check | 5      |
++----------+----------+-------------------+--------+
 
 2. REPORT DETAILS
 -----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net select_module/E[0] is a gated clock net sourced by a combinational pin select_module/led_reg[3]_i_1/O, cell select_module/led_reg[3]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net select_module/E[1] is a gated clock net sourced by a combinational pin select_module/led_reg[4]_i_1/O, cell select_module/led_reg[4]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net select_module/E[2] is a gated clock net sourced by a combinational pin select_module/led_reg[5]_i_1/O, cell select_module/led_reg[5]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net select_module/E[3] is a gated clock net sourced by a combinational pin select_module/led_reg[6]_i_1/O, cell select_module/led_reg[6]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#5 Warning
+Gated clock check  
+Net select_module/E[4] is a gated clock net sourced by a combinational pin select_module/led_reg[7]_i_1/O, cell select_module/led_reg[7]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
 

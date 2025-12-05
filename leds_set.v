@@ -8,7 +8,8 @@ module leds_set(
     input wire BEGIN_GAME,
     input wire INITIALIZE_BOARD,
     input wire ACK_BEGIN_GAME,
-    input wire INIT_INIT
+    input wire INIT_INIT,
+    input wire BOARD_READY
 
 );
 
@@ -23,8 +24,9 @@ begin
   value[14] = INITIALIZE_BOARD;
   value[13] = ACK_BEGIN_GAME;
   value[12] = INIT_INIT;
+  value[11] = BOARD_READY;
 
-  value[11:8] = 0;
+  value[10:8] = 0;
 
     if(final_COLOR_NUM == 3)
 		value[2:0] = 16'b0000000000000111;

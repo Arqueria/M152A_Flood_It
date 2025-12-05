@@ -87,7 +87,8 @@ leds_set leds_set_module(
     .BEGIN_GAME(BEGIN_GAME),
     .INITIALIZE_BOARD(INITIALIZE_BOARD),
     .ACK_BEGIN_GAME(ACK_BEGIN_GAME),
-    .INIT_INIT(INIT_INIT)
+    .INIT_INIT(INIT_INIT),
+    .BOARD_READY(BOARD_READY)
 );
 
 
@@ -201,8 +202,8 @@ displayVGA displayVGA_module(
 // 1 Green
 // 2 Blue
 // 3 Yellow
-// 4
-// 5
-// 6
-// 7
+// 4 Cyan
+// 5 Magenta
+// 6 Orange
+// 7 White
 endmodule
