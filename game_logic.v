@@ -12,7 +12,7 @@ module game_logic(
     output reg CHANGING_COLOR = 0,
     
     output reg INITIAL_INIT = 0,
-    input wire START_NEW_GAME,
+    input wire BEGIN_GAME,
     output reg STARTED_GAME = 0
 );
 
