@@ -137,7 +137,7 @@ generate_board random_gen(
 	.SIZE(SIZE),
 	.COLOR_NUM(COLOR_NUM),
 	.initial_BOARD(INIT_BOARD),
-	.READY(BOARD_READY)
+	.BOARD_READY(BOARD_READY)
 );
 
 
