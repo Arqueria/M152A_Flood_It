@@ -69,15 +69,15 @@ btn_deb debouncer(
 );
 
 // Interconnects between selector and rand
-wire INITIALIZE_BOARD;
-wire BOARD_READY;
+wire INIT_NEW_BOARD;
+wire NEW_BOARD_READY;
 
 // Interconnects between selector and game logic
-wire INIT_INIT;
+wire INITIAL_INITIALIZATION;
 wire COLOR_SEL_SIG;
 wire [2:0] COLOR_SELECTED;
 wire BEGIN_GAME;
-wire STARTED_GAME;
+wire ACK_BEGIN_GAME;
 wire [4:0] SIZE;
 wire [3:0] COLOR_NUM;
 wire CHANGING_COLOR;
@@ -102,16 +102,16 @@ select selector(
 	.sw(sw),
 
     // rand
-    .INITIALIZE_BOARD(INITIALIZE_BOARD),
-    .BOARD_READY(BOARD_READY),
+    .INITIALIZE_BOARD(INIT_NEW_BOARD),
+    .BOARD_READY(NEW_BOARD_READY),
 
     // game logic
-    .INIT_INIT(INIT_INIT),
+    .INITIALIZED(INITIAL_INITIALIZATION),
     .CURRENTLY_CHANGING_COLOR(CHANGING_COLOR),
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .COLOR_SELECTED(COLOR_SELECTED),
     .BEGIN_GAME(BEGIN_GAME),
-    .STARTED_GAME(STARTED_GAME),
+    .ACK_BEGIN_GAME(ACK_BEGIN_GAME),
     .SIZE(SIZE),
     .COLOR_NUM(COLOR_NUM),
 
@@ -133,11 +133,11 @@ wire [2:0] CURR_BOARD [25:0][25:0];
 generate_board random_gen(
 	.CLOCK(HZ500),
 	.seed(led),
-	.INITIALIZE_BOARD(INITIALIZE_BOARD),
+	.NEW_BOARD(INIT_NEW_BOARD),
 	.SIZE(SIZE),
 	.COLOR_NUM(COLOR_NUM),
 	.initial_BOARD(INIT_BOARD),
-	.BOARD_READY(BOARD_READY)
+	.READY(NEW_BOARD_READY)
 );
 
 
@@ -148,8 +148,8 @@ generate_board random_gen(
 digit_display digdisp(
     .CLOCK(HZ1000),
     .CLOCK_B(HZ4),
-	.COLOR_NUM(COLOR_NUM),
-	.SIZE(SIZE),
+	.COLOR_NUM(final_COLOR_NUM),
+	.SIZE(final_SIZE),
 	.sORc(sORc),
 	.MODE(MODE),
 	.TRIES(TRIES),
@@ -175,8 +175,8 @@ game_logic logicc(
     .COLOR_SELECTED(COLOR_SELECTED),
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .CHANGING_COLOR(CHANGING_COLOR),
-    .INIT_INIT(INIT_INIT),
-    .BEGIN_GAME(BEGIN_GAME),
+    .INITIAL_INIT(INITIAL_INITIALIZATION),
+    .START_NEW_GAME(BEGIN_GAME),
     .STARTED_GAME(ACK_BEGIN_GAME)
 );
 
@@ -184,17 +184,13 @@ displayVGA display(
     .CLOCK(MHZ25),
     .BOARD(CURR_BOARD),
     .SIZE(final_SIZE),
-    .INIT_INIT(INIT_INIT),
+    .INITIALIZED(INITIAL_INITIALIZATION),
     .vgaRed(vgaRed),
     .vgaBlue(vgaBlue),
     .vgaGreen(vgaGreen),
     .Hsync(Hsync),
     .Vsync(Vsync)
 );
-
-
-
-
 
 leds_set LEDS(
     .COLOR_NUM(final_COLOR_NUM),
@@ -203,13 +199,14 @@ leds_set LEDS(
 
 
 
+
 // COLOR CHART
 // 0 Red
 // 1 Green
 // 2 Blue
 // 3 Yellow
-// 4    
-// 5 
+// 4
+// 5
 // 6
-// 7 
+// 7
 endmodule

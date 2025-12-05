@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date             : Thu Dec  4 19:58:12 2025
+| Date             : Thu Dec  4 13:54:09 2025
 | Host             : computerUwU running 64-bit major release  (build 9200)
 | Command          : report_power -file FloodIt_power_routed.rpt -pb FloodIt_power_summary_routed.pb -rpx FloodIt_power_routed.rpx
 | Design           : FloodIt
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.121        |
+| Total On-Chip Power (W)  | 0.129        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.049        |
+| Dynamic (W)              | 0.058        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.011 |    22449 |       --- |             --- |
-|   LUT as Logic |     0.010 |    12738 |     20800 |           61.24 |
-|   CARRY4       |    <0.001 |      352 |      8150 |            4.32 |
-|   Register     |    <0.001 |     7115 |     41600 |           17.10 |
-|   F7/F8 Muxes  |    <0.001 |     1400 |     32600 |            4.29 |
+| Slice Logic    |     0.014 |    22062 |       --- |             --- |
+|   LUT as Logic |     0.013 |    12554 |     20800 |           60.36 |
+|   CARRY4       |    <0.001 |      278 |      8150 |            3.41 |
+|   Register     |    <0.001 |     7123 |     41600 |           17.12 |
+|   F7/F8 Muxes  |    <0.001 |     1320 |     32600 |            4.05 |
 |   BUFG         |    <0.001 |        2 |        32 |            6.25 |
 |   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |     0.013 |    14905 |       --- |             --- |
-| I/O            |     0.023 |       55 |       106 |           51.89 |
+| Signals        |     0.017 |    14742 |       --- |             --- |
+| I/O            |     0.025 |       55 |       106 |           51.89 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.121 |          |           |                 |
+| Total          |     0.129 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,8 +73,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.036 |       0.026 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.042 |       0.033 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.008 |       0.007 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -142,11 +142,12 @@ Table of Contents
 +--------------+-----------+
 | Name         | Power (W) |
 +--------------+-----------+
-| FloodIt      |     0.049 |
+| FloodIt      |     0.058 |
 |   clocks     |     0.003 |
-|   logicc     |     0.009 |
+|   display    |     0.002 |
+|   logicc     |     0.014 |
 |   random_gen |     0.005 |
-|   selector   |     0.005 |
+|   selector   |     0.007 |
 +--------------+-----------+
 
 

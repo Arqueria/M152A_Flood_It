@@ -11,12 +11,12 @@ module game_logic(
     input wire COLOR_SEL_SIG,
     output reg CHANGING_COLOR = 0,
     
-    output reg INIT_INIT = 0,
-    input wire BEGIN_GAME,
+    output reg INITIAL_INIT = 0,
+    input wire START_NEW_GAME,
     output reg STARTED_GAME = 0
 );
 
-    reg [2:0] LOCAL_COLOR_SELECTED = 0;
+    reg [2:0] LOCAL_COLOR_SELECTED;
     reg DONE_CHANGING_COLOR = 0;
 
     integer i;
@@ -24,7 +24,7 @@ module game_logic(
 
     always @ (posedge CLOCK)
     begin
-        if(BEGIN_GAME)
+        if(START_NEW_GAME)
         begin
             if(~STARTED_GAME && ~CHANGING_COLOR)
             begin
@@ -46,14 +46,14 @@ module game_logic(
                 
                 STARTED_GAME <= 1;
                 CHANGING_COLOR <= 0;
-                INIT_INIT <= 1;
+                INITIAL_INIT <= 1;
             end
         end
         
-        else if(~BEGIN_GAME && STARTED_GAME)
+        else if(~START_NEW_GAME && STARTED_GAME)
             STARTED_GAME <= 0;
 
-        else if(~BEGIN_GAME && ~STARTED_GAME)
+        else if(~START_NEW_GAME && ~STARTED_GAME)
         begin
             if(COLOR_SEL_SIG && ~CHANGING_COLOR)
             begin

@@ -2,7 +2,7 @@ module displayVGA(
     input wire CLOCK,
     input wire [2:0] BOARD [25:0][25:0], 
     input wire [4:0] SIZE,
-    input wire INIT_INIT,
+    input wire INITIALIZED,
     
     output reg [3:0] vgaRed,
     output reg [3:0] vgaBlue,
@@ -49,7 +49,7 @@ module displayVGA(
         dynamic_offset_y = vbp + ((480 - board_height_px) >> 1);
     end
 
-    wire [10:0]      pixel_x;
+    wire [10:0] pixel_x;
     wire [10:0] pixel_y;
     assign pixel_x = hc; 
     assign pixel_y = vc;
@@ -61,7 +61,7 @@ module displayVGA(
     assign grid_row = (pixel_y >= dynamic_offset_y) ? (pixel_y - dynamic_offset_y) / SQUARE_SIZE : 6'd63;
     
     always @(*) begin
-        if (INIT_INIT) begin
+        if (INITIALIZED) begin
             if (pixel_x >= hbp && pixel_x < (hbp + 640) && pixel_y >= vbp && pixel_y < (vbp + 480)) begin
                 
                 if (pixel_x >= dynamic_offset_x && pixel_y >= dynamic_offset_y && 
@@ -90,6 +90,5 @@ module displayVGA(
             vgaRed = 0; vgaBlue = 0; vgaGreen = 0;
         end
     end
-    
-    
+
 endmodule

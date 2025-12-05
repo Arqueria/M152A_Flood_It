@@ -20,13 +20,13 @@ module select(
 	
  	// Interactions with game logic
 	
-	input wire INIT_INIT,
+	input wire INITIALIZED,
 
 	input wire CURRENTLY_CHANGING_COLOR,
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0,
     output reg BEGIN_GAME = 0,
-	input wire STARTED_GAME,
+	input wire ACK_BEGIN_GAME,
 	output reg [4:0] SIZE = 14,
 	output reg [3:0] COLOR_NUM = 6,
 
@@ -46,6 +46,18 @@ reg ACK_DOWN = 0;
 reg ACK_LEFT = 0;
 reg ACK_RIGHT = 0;
 reg ACK_CENTER = 0;
+
+reg ACK_UPs = 0;
+reg ACK_DOWNs = 0;
+reg ACK_LEFTs = 0;
+reg ACK_RIGHTs = 0;
+reg ACK_CENTERs = 0;
+
+reg UP_HELD = 0;
+reg DOWN_HELD = 0;
+reg LEFT_HELD = 0;
+reg RIGHT_HELD = 0;
+reg CENTER_HELD = 0;
 
 
 reg UP_PREV = 0;
@@ -211,14 +223,14 @@ begin
 	end
 
 
-	if(BEGIN_GAME == 1 || STARTED_GAME == 1)
+	if(BEGIN_GAME == 1 || ACK_BEGIN_GAME == 1)
 	begin
 		MODE <= 1;
 	end
 	else if (RIGHT_PREV == 0 && RIGHT == 1)
 	begin
 		ACK_RIGHT <= 1;
-		if(~ACK_RIGHT && INIT_INIT)
+		if(~ACK_RIGHT && INITIALIZED)
 			MODE <= ~MODE;
 	end
 	else 
@@ -226,15 +238,7 @@ begin
 		ACK_RIGHT <= 0;
 	end
 
-
-
-	if(~INIT_INIT)
-	begin
-		INITIALIZE_BOARD <= 1;
-		final_SIZE <= SIZE;
-		final_COLOR_NUM <= COLOR_NUM;
-	end
-	else if(INITIALIZE_BOARD == 1)
+	if(INITIALIZE_BOARD == 1)
 	begin
 		if(BOARD_READY == 1)
 		begin
@@ -244,22 +248,25 @@ begin
 	end
 	else if(BEGIN_GAME)
 	begin
-		if(STARTED_GAME)
+		if(ACK_BEGIN_GAME)
 			BEGIN_GAME <= 0;
 	end
 	else if (CENTER_PREV == 0 && CENTER == 1)
 	begin
 		ACK_CENTER <= 1;
-		if(~ACK_CENTER && ~MODE)
+		if(~ACK_RIGHT && ~MODE)
 		begin
 			INITIALIZE_BOARD <= 1;
 			final_SIZE <= SIZE;
 			final_COLOR_NUM <= COLOR_NUM;
-		    TOTAL_TRIES <= getTTries(SIZE, COLOR_NUM);
 		end
 	end
-
-
+	else if (~INITIALIZED)
+	begin
+		INITIALIZE_BOARD <= 1;
+		final_SIZE <= SIZE;
+		final_COLOR_NUM <= COLOR_NUM;
+	end
 	else 
 	begin
 		ACK_CENTER <= 0;
@@ -279,7 +286,7 @@ reg SW7p = 0;
 
 always @ (posedge MASTER_CLOCK)
 begin
-if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~STARTED_GAME && INIT_INIT)
+if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME && INITIALIZED)
 begin
 	SW0p <= sw[0];
 	SW1p <= sw[1];
@@ -348,7 +355,7 @@ else if (INITIALIZE_BOARD)
 begin   
     TRIES <= 0;
 end
-else if (~INIT_INIT)
+else if (~INITIALIZED)
 begin
     SW0p <= sw[0];
 	SW1p <= sw[1];

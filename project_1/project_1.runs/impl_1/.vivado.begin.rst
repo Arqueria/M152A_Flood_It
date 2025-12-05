@@ -1,60 +1,20 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="7744" HostCore="8" HostMemory="033661177856">
+    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="21600" HostCore="8" HostMemory="033661177856">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="8432" HostCore="8" HostMemory="033661177856">
+    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="21388" HostCore="8" HostMemory="033661177856">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="20412" HostCore="8" HostMemory="033661177856">
+    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="15136" HostCore="8" HostMemory="033661177856">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="22376" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="11244" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="20120" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="19920" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="12256" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="9844" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="13664" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="4376" HostCore="8" HostMemory="033661177856">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="8516" HostCore="8" HostMemory="033661177856">
+    <Process Command="vivado.bat" Owner="rdo15" Host="COMPUTERUWU" Pid="15632" HostCore="8" HostMemory="033661177856">
     </Process>
 </ProcessHandle>

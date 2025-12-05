@@ -4,14 +4,14 @@ module generate_board(
 
 	
 	input wire [15:0] seed,
-	input wire INITIALIZE_BOARD,
+	input wire NEW_BOARD,
 	input wire [4:0] SIZE,
 	input wire [3:0] COLOR_NUM,
 	
 	
 	
 	output reg [2:0] initial_BOARD [25:0][25:0],
-	output reg BOARD_READY = 0
+	output reg READY = 0
 	
 
 
@@ -36,7 +36,7 @@ reg setting = 0;
 
 always @ (posedge CLOCK)
 begin
-	if(INITIALIZE_BOARD && ~running && ~BOARD_READY)
+	if(NEW_BOARD && ~running && ~READY)
 	begin
 		running <= 1;
 		setting <= 0;
@@ -51,15 +51,14 @@ begin
 		local_COLOR_NUM <= COLOR_NUM;
 		local_SIZE <= SIZE;
 	end	
-	else if (~INITIALIZE_BOARD && BOARD_READY)
+	else if (~NEW_BOARD && READY)
 	begin
-		BOARD_READY <= 0;
+		READY <= 0;
 	end
 	else if ( ROW == local_SIZE )
 	begin	
 		running <= 0;
-		BOARD_READY <= 1;
-		ROW <= 0;
+		READY <= 1;
 	end 
 	else if(running)
 	begin
