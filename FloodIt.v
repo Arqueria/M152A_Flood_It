@@ -148,8 +148,8 @@ generate_board random_gen(
 digit_display digdisp(
     .CLOCK(HZ1000),
     .CLOCK_B(HZ4),
-	.COLOR_NUM(final_COLOR_NUM),
-	.SIZE(final_SIZE),
+	.COLOR_NUM(COLOR_NUM),
+	.SIZE(SIZE),
 	.sORc(sORc),
 	.MODE(MODE),
 	.TRIES(TRIES),
@@ -205,8 +205,8 @@ leds_set LEDS(
 // 1 Green
 // 2 Blue
 // 3 Yellow
-// 4
-// 5
-// 6
-// 7
+// 4    
+// 5 
+// 6 
+// 7 
 endmodule

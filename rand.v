@@ -40,6 +40,7 @@ begin
 	begin
 		running <= 1;
 		setting <= 0;
+		READY <= 0;
 		
 		if(seed)
 			R <= seed;
