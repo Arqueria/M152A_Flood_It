@@ -24,7 +24,7 @@ module game_logic(
 
     always @ (posedge CLOCK)
     begin
-        if(START_NEW_GAME)
+        if(BEGIN_GAME)
         begin
             if(~STARTED_GAME && ~CHANGING_COLOR)
             begin
@@ -50,10 +50,10 @@ module game_logic(
             end
         end
         
-        else if(~START_NEW_GAME && STARTED_GAME)
+        else if(~BEGIN_GAME && STARTED_GAME)
             STARTED_GAME <= 0;
 
-        else if(~START_NEW_GAME && ~STARTED_GAME)
+        else if(~BEGIN_GAME && ~STARTED_GAME)
         begin
             if(COLOR_SEL_SIG && ~CHANGING_COLOR)
             begin
