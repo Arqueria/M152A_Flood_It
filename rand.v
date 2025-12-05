@@ -36,11 +36,10 @@ reg setting = 0;
 
 always @ (posedge CLOCK)
 begin
-	if(NEW_BOARD && ~running)
+	if(NEW_BOARD && ~running && ~READY)
 	begin
 		running <= 1;
 		setting <= 0;
-		READY <= 0;
 		
 		if(seed)
 			R <= seed;

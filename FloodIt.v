@@ -159,13 +159,7 @@ digit_display digdisp(
 
 );
 
-reg old_ready = 0;
-always @ (posedge HZ500)
-begin
-    old_ready <= NEW_BOARD_READY;
-end
 
-wire start_pulse = NEW_BOARD_READY && ~old_ready;
 
 
 
@@ -182,7 +176,7 @@ game_logic logicc(
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .CHANGING_COLOR(CHANGING_COLOR),
     .INITIAL_INIT(INITIAL_INITIALIZATION),
-    .START_NEW_GAME(start_pulse),
+    .START_NEW_GAME(BEGIN_GAME),
     .STARTED_GAME(ACK_BEGIN_GAME)
 );
 
@@ -198,14 +192,25 @@ displayVGA display(
     .Vsync(Vsync)
 );
 
+
+
+
+
 leds_set LEDS(
     .COLOR_NUM(final_COLOR_NUM),
     .led(led)
 );
 
 
+generate
+genvar L;
+genvar R;
 
+    for(L = 0; L < 25; L = L+1)
+    for(R = 0; R < 25; R = R+1)
+    $display(%d, CURR_BOARD[L][R]);
 
+endgenerate
 // COLOR CHART
 // 0 Red
 // 1 Green

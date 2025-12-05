@@ -90,5 +90,6 @@ module displayVGA(
             vgaRed = 0; vgaBlue = 0; vgaGreen = 0;
         end
     end
-
+    
+    
 endmodule
