@@ -36,7 +36,7 @@ reg setting = 0;
 
 always @ (posedge CLOCK)
 begin
-	if(NEW_BOARD && ~running && ~READY)
+	if(NEW_BOARD && ~running)
 	begin
 		running <= 1;
 		setting <= 0;

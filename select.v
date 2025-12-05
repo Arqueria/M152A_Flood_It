@@ -259,6 +259,7 @@ begin
 			INITIALIZE_BOARD <= 1;
 			final_SIZE <= SIZE;
 			final_COLOR_NUM <= COLOR_NUM;
+		    TOTAL_TRIES <= getTTries(SIZE, COLOR_NUM);
 		end
 	end
 	else if (~INITIALIZED)
@@ -266,6 +267,7 @@ begin
 		INITIALIZE_BOARD <= 1;
 		final_SIZE <= SIZE;
 		final_COLOR_NUM <= COLOR_NUM;
+
 	end
 	else 
 	begin

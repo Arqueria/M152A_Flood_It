@@ -1,0 +1,363 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Thu Dec  4 17:04:34 2025
+| Host         : computerUwU running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file FloodIt_control_sets_placed.rpt
+| Design       : FloodIt
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   285 |
+|    Minimum number of control sets                        |   285 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |  1624 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   285 |
+| >= 0 to < 4        |     6 |
+| >= 4 to < 6        |     3 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     6 |
+| >= 10 to < 12      |   258 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    10 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |            4135 |         1459 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             174 |           46 |
+| Yes          | No                    | No                     |            2695 |          946 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              84 |           30 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+|   Clock Signal  |            Enable Signal           |          Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+|  clocks/HZ1000  |                                    | digdisp/an[3]_i_1_n_0              |                1 |              1 |         1.00 |
+|  clocks/HZ1000  |                                    | selector/MODE_reg_1                |                1 |              1 |         1.00 |
+|  clocks/CLOCK_B |                                    |                                    |                1 |              1 |         1.00 |
+|  clocks/HZ1000  |                                    |                                    |                2 |              2 |         1.00 |
+|  clocks/HZ1000  |                                    | digdisp/an[1]_i_1_n_0              |                1 |              2 |         2.00 |
+|  clocks/MHZ25   | display/hc[9]_i_1_n_0              | display/vc                         |                1 |              2 |         2.00 |
+|  HZ5K_BUFG      | selector/COLOR_NUM[3]_i_1_n_0      |                                    |                3 |              4 |         1.33 |
+|  HZ5K_BUFG      | selector/SIZE[4]_i_1_n_0           |                                    |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG  |                                    |                                    |                5 |              5 |         1.00 |
+|  clocks/HZ1000  | digdisp/seg0                       |                                    |                4 |              7 |         1.75 |
+|  clocks/MHZ25   | display/hc[9]_i_1_n_0              |                                    |                3 |              8 |         2.67 |
+|  HZ500_BUFG     | random_gen/ROW[7]_i_1_n_0          | selector/INITIALIZE_BOARD_reg_0[0] |                4 |              8 |         2.00 |
+|  HZ5K_BUFG      | selector/COLOR_SEL_SIG5_out        | selector/SR[0]                     |                3 |              8 |         2.67 |
+|  HZ5K_BUFG      | selector/final_SIZE[4]_i_1_n_0     |                                    |                3 |              8 |         2.67 |
+|  HZ5K_BUFG      | selector/SW7p_0                    |                                    |                4 |              8 |         2.00 |
+|  HZ500_BUFG     | random_gen/COL[7]_i_2_n_0          | random_gen/COL[7]_i_1_n_0          |                4 |              8 |         2.00 |
+|  clocks/MHZ25   |                                    | display/hc[9]_i_1_n_0              |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[88][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/tail[7]_i_1_n_0             | selector/STARTED_GAME_reg_3        |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[103][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[0][9]_i_2_n_0         | logicc/queue[0][9]_i_1_n_0         |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[100][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[102][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[104][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[105][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[101][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[110][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[120][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[125][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[126][9]_i_1_n_0       |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[106][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[111][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[11][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[10][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[119][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[114][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[117][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[112][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[122][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[118][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[109][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[121][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[115][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[108][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[107][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[116][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[124][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[127][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[113][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[123][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[151][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[152][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[133][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[132][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[134][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[129][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[137][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[13][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[140][9]_i_1_n_0       |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[131][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[135][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[142][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[144][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[145][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[143][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[146][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[128][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[136][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[141][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[12][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[147][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[139][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[148][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[149][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[130][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[14][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[138][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[150][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[165][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[156][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[169][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[155][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[160][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[166][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[163][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[168][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[157][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[16][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[171][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[15][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[161][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[167][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[154][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[158][9]_i_1_n_0       |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[170][9]_i_1_n_0       |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[153][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[159][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[172][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[173][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[174][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[164][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[175][9]_i_1_n_0       |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[162][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[176][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[182][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[191][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[192][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[186][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[178][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[187][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[193][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[190][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[194][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[196][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[184][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[18][9]_i_1_n_0        |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[188][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[181][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[179][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[195][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[185][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[197][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[183][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[17][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[177][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[180][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[189][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[219][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[218][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[21][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[204][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[220][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[212][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[206][9]_i_1_n_0       |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[20][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[210][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[202][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[214][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[19][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[209][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[217][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[207][9]_i_1_n_0       |                                    |                9 |             10 |         1.11 |
+|  HZ500_BUFG     | logicc/queue[215][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[211][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[205][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[208][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[216][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[198][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[200][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[199][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[201][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[203][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[213][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[1][9]_i_1_n_0         |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[230][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[232][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[231][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[223][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[233][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[225][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[234][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[221][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[229][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[226][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[222][9]_i_1_n_0       |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[228][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[22][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[227][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[224][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[235][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[239][9]_i_1_n_0       |                                    |                9 |             10 |         1.11 |
+|  HZ500_BUFG     | logicc/queue[246][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[23][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[247][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[241][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[238][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[237][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[236][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[240][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[243][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[245][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[248][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[249][9]_i_1_n_0       |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[242][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[244][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[251][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[253][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[30][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[39][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[254][9]_i_1_n_0       |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[2][9]_i_1_n_0         |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[3][9]_i_1_n_0         |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[27][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[28][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[32][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[33][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[35][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[36][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[255][9]_i_1_n_0       |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[26][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[252][9]_i_1_n_0       |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[29][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[250][9]_i_1_n_0       |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[38][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[34][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[31][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[25][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[37][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[40][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[24][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[58][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[43][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[45][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[61][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[4][9]_i_1_n_0         |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[41][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[48][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[50][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[44][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[47][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[46][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[51][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[52][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[56][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[42][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[53][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[59][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[54][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[49][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[5][9]_i_1_n_0         |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[60][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[55][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[57][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[62][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[67][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[77][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[73][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[65][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[66][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[7][9]_i_1_n_0         |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[80][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[71][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[6][9]_i_1_n_0         |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[82][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[68][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[78][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[81][9]_i_1_n_0        |                                    |                5 |             10 |         2.00 |
+|  HZ500_BUFG     | logicc/queue[75][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[83][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[72][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[64][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[63][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[84][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[85][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[86][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[76][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[69][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[74][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[79][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[70][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[94][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[95][9]_i_1_n_0        |                                    |                9 |             10 |         1.11 |
+|  HZ500_BUFG     | logicc/queue[93][9]_i_1_n_0        |                                    |                7 |             10 |         1.43 |
+|  HZ500_BUFG     | logicc/queue[89][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[87][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[90][9]_i_1_n_0        |                                    |                2 |             10 |         5.00 |
+|  HZ500_BUFG     | logicc/queue[98][9]_i_1_n_0        |                                    |                6 |             10 |         1.67 |
+|  HZ500_BUFG     | logicc/queue[8][9]_i_1_n_0         |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[9][9]_i_1_n_0         |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[99][9]_i_1_n_0        |                                    |                8 |             10 |         1.25 |
+|  HZ500_BUFG     | logicc/queue[91][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[96][9]_i_1_n_0        |                                    |                3 |             10 |         3.33 |
+|  HZ500_BUFG     | logicc/queue[92][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | logicc/queue[97][9]_i_1_n_0        |                                    |                4 |             10 |         2.50 |
+|  HZ500_BUFG     | selector/INITIALIZE_BOARD_reg_0[0] |                                    |                8 |             14 |         1.75 |
+|  HZ5K_BUFG      |                                    |                                    |               10 |             17 |         1.70 |
+|  HZ500_BUFG     | logicc/head                        | selector/STARTED_GAME_reg_3        |                6 |             18 |         3.00 |
+|  HZ500_BUFG     | logicc/anim_timer                  | logicc/anim_timer[0]_i_1_n_0       |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG  |                                    | clocks/HZ1000_COUNT1_carry__3_n_7  |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG  |                                    | clocks/HZ500_COUNT1_carry__3_n_7   |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG  |                                    | clocks/HZ5K_COUNT1_carry__3_n_7    |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG  |                                    | clocks/MHZ25_COUNT1_carry__3_n_7   |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG  |                                    | clocks/clear                       |                8 |             32 |         4.00 |
+|  HZ500_BUFG     | logicc/cur_r__0                    |                                    |               35 |             92 |         2.63 |
+|  HZ500_BUFG     |                                    |                                    |             1441 |           4110 |         2.85 |
++-----------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+
+
