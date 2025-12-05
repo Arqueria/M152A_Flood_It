@@ -7,10 +7,6 @@ module select(
     input wire CENTER,
 	input wire [15:0] sw,
 
-	
-	
-	
-	
 	// Interactions with rand
 	
     output reg INITIALIZE_BOARD = 0,
@@ -20,9 +16,9 @@ module select(
 	
  	// Interactions with game logic
 	
-	input wire INITIALIZED,
+	input wire INIT_INIT,
 
-	input wire CURRENTLY_CHANGING_COLOR,
+	input wire CHANGING_COLOR,
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0,
     output reg BEGIN_GAME = 0,
@@ -47,30 +43,12 @@ reg ACK_LEFT = 0;
 reg ACK_RIGHT = 0;
 reg ACK_CENTER = 0;
 
-reg ACK_UPs = 0;
-reg ACK_DOWNs = 0;
-reg ACK_LEFTs = 0;
-reg ACK_RIGHTs = 0;
-reg ACK_CENTERs = 0;
-
-reg UP_HELD = 0;
-reg DOWN_HELD = 0;
-reg LEFT_HELD = 0;
-reg RIGHT_HELD = 0;
-reg CENTER_HELD = 0;
-
 
 reg UP_PREV = 0;
 reg DOWN_PREV = 0;
 reg LEFT_PREV = 0;
 reg RIGHT_PREV = 0;
 reg CENTER_PREV = 0;
-
-
-
-
-
-
 
 
 function [7:0] getTTries;
@@ -166,10 +144,6 @@ endfunction
 
 
 
-
-
-
-
 always @ (posedge MASTER_CLOCK)
 begin
 	UP_PREV <= UP;
@@ -230,7 +204,7 @@ begin
 	else if (RIGHT_PREV == 0 && RIGHT == 1)
 	begin
 		ACK_RIGHT <= 1;
-		if(~ACK_RIGHT && INITIALIZED)
+		if(~ACK_RIGHT && INIT_INIT)
 			MODE <= ~MODE;
 	end
 	else 
@@ -259,9 +233,10 @@ begin
 			INITIALIZE_BOARD <= 1;
 			final_SIZE <= SIZE;
 			final_COLOR_NUM <= COLOR_NUM;
+			TOTAL_TRIES <= getTTries(SIZE, COLOR_NUM);
 		end
 	end
-	else if (~INITIALIZED)
+	else if (~INIT_INIT)
 	begin
 		INITIALIZE_BOARD <= 1;
 		final_SIZE <= SIZE;
@@ -282,11 +257,9 @@ reg SW5p = 0;
 reg SW6p = 0;
 reg SW7p = 0;
 
-
-
 always @ (posedge MASTER_CLOCK)
 begin
-if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME && INITIALIZED)
+if(MODE)
 begin
 	SW0p <= sw[0];
 	SW1p <= sw[1];
@@ -297,10 +270,27 @@ begin
 	SW6p <= sw[6];
 	SW7p <= sw[7];
 
-    if(COLOR_SEL_SIG || CURRENTLY_CHANGING_COLOR)
+	if (~INIT_INIT)
 	begin
-		if(CURRENTLY_CHANGING_COLOR)
+		SW0p <= sw[0];
+		SW1p <= sw[1];
+		SW2p <= sw[2];
+		SW3p <= sw[3];
+		SW4p <= sw[4];
+		SW5p <= sw[5];
+		SW6p <= sw[6];
+		SW7p <= sw[7];
+	end
+	else if (INITIALIZE_BOARD)
+	begin   
+		TRIES <= 0;
+		COLOR_SEL_SIG <= 0;
+	end
+	else if(COLOR_SEL_SIG || CHANGING_COLOR)
+	begin
+		if(CHANGING_COLOR)
 			COLOR_SEL_SIG <= 0;
+		
 	end
 	else if(SW0p == ~sw[0])
 	begin
@@ -351,24 +341,7 @@ begin
 		COLOR_SEL_SIG <= 1;
 	end
 end
-else if (INITIALIZE_BOARD)
-begin   
-    TRIES <= 0;
 end
-else if (~INITIALIZED)
-begin
-    SW0p <= sw[0];
-	SW1p <= sw[1];
-	SW2p <= sw[2];
-	SW3p <= sw[3];
-	SW4p <= sw[4];
-	SW5p <= sw[5];
-	SW6p <= sw[6];
-	SW7p <= sw[7];
-end
-
-end
-
 
 
 function [4:0] SIZE_CHANGE;
@@ -485,11 +458,6 @@ begin
 	
 end
 endfunction
-
-
-
-
-
 
 
 

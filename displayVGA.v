@@ -1,8 +1,8 @@
 module displayVGA(
     input wire CLOCK,
-    input wire [2:0] BOARD [25:0][25:0], 
-    input wire [4:0] SIZE,
-    input wire INITIALIZED,
+    input wire [2:0] GAME_BOARD [25:0][25:0], 
+    input wire [4:0] final_SIZE,
+    input wire INIT_INIT,
     
     output reg [3:0] vgaRed,
     output reg [3:0] vgaBlue,
@@ -41,8 +41,8 @@ module displayVGA(
     wire [10:0] board_width_px;
     wire [10:0] board_height_px;
     
-    assign board_width_px  = SIZE * SQUARE_SIZE;
-    assign board_height_px = SIZE * SQUARE_SIZE;
+    assign board_width_px  = final_SIZE * SQUARE_SIZE;
+    assign board_height_px = final_SIZE * SQUARE_SIZE;
     
     always @(*) begin
         dynamic_offset_x = hbp + ((640 - board_width_px) >> 1);
@@ -61,13 +61,13 @@ module displayVGA(
     assign grid_row = (pixel_y >= dynamic_offset_y) ? (pixel_y - dynamic_offset_y) / SQUARE_SIZE : 6'd63;
     
     always @(*) begin
-        if (INITIALIZED) begin
+        if (INIT_INIT) begin
             if (pixel_x >= hbp && pixel_x < (hbp + 640) && pixel_y >= vbp && pixel_y < (vbp + 480)) begin
                 
                 if (pixel_x >= dynamic_offset_x && pixel_y >= dynamic_offset_y && 
-                    grid_col < SIZE && grid_row < SIZE) begin
+                    grid_col < final_SIZE && grid_row < final_SIZE) begin
                     
-                    case (BOARD[grid_row][grid_col])
+                    case (GAME_BOARD[grid_row][grid_col])
                         3'd0: begin vgaRed = 4'hF; vgaGreen = 4'h0; vgaBlue = 4'h0; end
                         3'd1: begin vgaRed = 4'h0; vgaGreen = 4'hF; vgaBlue = 4'h0; end
                         3'd2: begin vgaRed = 4'h0; vgaGreen = 4'h0; vgaBlue = 4'hF; end

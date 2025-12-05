@@ -1,19 +1,17 @@
 module game_logic(
-    input wire CLOCK, 
-    input wire UPDATE_CLOCK, // Not strictly needed anymore, we use an internal timer
+    input wire CLOCK,
     input wire [2:0] INITIAL_BOARD [25:0][25:0],   
     output reg [2:0] GAME_BOARD [25:0][25:0],
     
-    input wire [4:0] SIZE, 
-    input wire [3:0] COLOR_NUM, 
+    input wire [4:0] final_SIZE,
     
     input wire [2:0] COLOR_SELECTED,
     input wire COLOR_SEL_SIG,
     output reg CHANGING_COLOR = 0,
     
-    output reg INITIAL_INIT = 0,
-    input wire START_NEW_GAME,
-    output reg STARTED_GAME = 0
+    output reg INIT_INIT = 0,
+    input wire BEGIN_GAME,
+    output reg ACK_BEGIN_GAME = 0
 );
 
     reg [2:0] LOCAL_COLOR_SELECTED;
@@ -50,30 +48,30 @@ module game_logic(
     always @ (posedge CLOCK)
     begin
         // Priority 1: Reset / Initialize Game
-        if(START_NEW_GAME)
+        if(BEGIN_GAME)
         begin
-            if(~STARTED_GAME)
+            if(~ACK_BEGIN_GAME)
             begin
                 // Copy Initial Board
-                if (SIZE == 2) begin
+                if (final_SIZE == 2) begin
                     for(i=0; i < 2; i = i + 1) for(j=0; j < 2; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 6) begin
+                end else if (final_SIZE == 6) begin
                     for(i=0; i < 6; i = i + 1) for(j=0; j < 6; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 10) begin
+                end else if (final_SIZE == 10) begin
                     for(i=0; i < 10; i = i + 1) for(j=0; j < 10; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 14) begin
+                end else if (final_SIZE == 14) begin
                     for(i=0; i < 14; i = i + 1) for(j=0; j < 14; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 18) begin
+                end else if (final_SIZE == 18) begin
                     for(i=0; i < 18; i = i + 1) for(j=0; j < 18; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 22) begin
+                end else if (final_SIZE == 22) begin
                     for(i=0; i < 22; i = i + 1) for(j=0; j < 22; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
-                end else if (SIZE == 26) begin
+                end else if (final_SIZE == 26) begin
                     for(i=0; i < 26; i = i + 1) for(j=0; j < 26; j = j + 1) GAME_BOARD[i][j] <= INITIAL_BOARD[i][j];
                 end
                 
-                STARTED_GAME <= 1;
+                ACK_BEGIN_GAME <= 1;
                 CHANGING_COLOR <= 0;
-                INITIAL_INIT <= 1;
+                INIT_INIT <= 1;
                 
                 // Reset BFS state
                 bfs_state <= BFS_IDLE;
@@ -85,10 +83,10 @@ module game_logic(
         else begin
             // Priority 2: Game Logic
             
-            if(STARTED_GAME) STARTED_GAME <= 0; // Turn off start flag
+            if(ACK_BEGIN_GAME) ACK_BEGIN_GAME <= 0; // Turn off start flag
 
             // Handshake Start
-            if(COLOR_SEL_SIG && ~CHANGING_COLOR)
+            else if(COLOR_SEL_SIG && ~CHANGING_COLOR)
             begin
                 CHANGING_COLOR <= 1;
                 LOCAL_COLOR_SELECTED <= COLOR_SELECTED;
@@ -96,14 +94,14 @@ module game_logic(
             end
             
             // Handshake End
-            if(CHANGING_COLOR && DONE_CHANGING_COLOR)
+            else if(CHANGING_COLOR && DONE_CHANGING_COLOR)
             begin
                 CHANGING_COLOR <= 0;
                 DONE_CHANGING_COLOR <= 0;
             end
 
             // --- BFS ALGORITHM ---
-            if(CHANGING_COLOR && ~DONE_CHANGING_COLOR) begin
+            else if(CHANGING_COLOR && ~DONE_CHANGING_COLOR) begin
                 
                 // ENABLE LOGIC: Wait for the timer to fill up
                 if (anim_timer < ANIM_SPEED) begin
@@ -150,7 +148,7 @@ module game_logic(
                                     neighbor_step <= 1;
                                 end
                                 1: begin // DOWN
-                                    if (cur_r < SIZE - 1 && GAME_BOARD[cur_r + 1][cur_c] == old_color) begin
+                                    if (cur_r < final_SIZE - 1 && GAME_BOARD[cur_r + 1][cur_c] == old_color) begin
                                         GAME_BOARD[cur_r + 1][cur_c] <= LOCAL_COLOR_SELECTED;
                                         queue[tail] <= {cur_r[4:0] + 5'd1, cur_c[4:0]};
                                         tail <= tail + 1;
@@ -166,7 +164,7 @@ module game_logic(
                                     neighbor_step <= 3;
                                 end
                                 3: begin // RIGHT
-                                    if (cur_c < SIZE - 1 && GAME_BOARD[cur_r][cur_c + 1] == old_color) begin
+                                    if (cur_c < final_SIZE - 1 && GAME_BOARD[cur_r][cur_c + 1] == old_color) begin
                                         GAME_BOARD[cur_r][cur_c + 1] <= LOCAL_COLOR_SELECTED;
                                         queue[tail] <= {cur_r[4:0], cur_c[4:0] + 5'd1};
                                         tail <= tail + 1;
