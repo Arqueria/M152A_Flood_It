@@ -47,18 +47,6 @@ reg ACK_LEFT = 0;
 reg ACK_RIGHT = 0;
 reg ACK_CENTER = 0;
 
-reg ACK_UPs = 0;
-reg ACK_DOWNs = 0;
-reg ACK_LEFTs = 0;
-reg ACK_RIGHTs = 0;
-reg ACK_CENTERs = 0;
-
-reg UP_HELD = 0;
-reg DOWN_HELD = 0;
-reg LEFT_HELD = 0;
-reg RIGHT_HELD = 0;
-reg CENTER_HELD = 0;
-
 
 reg UP_PREV = 0;
 reg DOWN_PREV = 0;

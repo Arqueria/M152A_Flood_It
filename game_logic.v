@@ -16,7 +16,7 @@ module game_logic(
     output reg STARTED_GAME = 0
 );
 
-    reg [2:0] LOCAL_COLOR_SELECTED;
+    reg [2:0] LOCAL_COLOR_SELECTED = 0;
     reg DONE_CHANGING_COLOR = 0;
 
     integer i;

@@ -202,15 +202,7 @@ leds_set LEDS(
 );
 
 
-generate
-genvar L;
-genvar R;
 
-    for(L = 0; L < 25; L = L+1)
-    for(R = 0; R < 25; R = R+1)
-    $display(%d, CURR_BOARD[L][R]);
-
-endgenerate
 // COLOR CHART
 // 0 Red
 // 1 Green
