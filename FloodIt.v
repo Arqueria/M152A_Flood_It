@@ -159,7 +159,13 @@ digit_display digdisp(
 
 );
 
+reg old_ready = 0;
+always @ (posedge HZ500)
+begin
+    old_ready <= NEW_BOARD_READY;
+end
 
+wire start_pulse = NEW_BOARD_READY && ~old_ready;
 
 
 
@@ -176,7 +182,7 @@ game_logic logicc(
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .CHANGING_COLOR(CHANGING_COLOR),
     .INITIAL_INIT(INITIAL_INITIALIZATION),
-    .START_NEW_GAME(BEGIN_GAME && NEW_BOARD_READY),
+    .START_NEW_GAME(start_pulse),
     .STARTED_GAME(ACK_BEGIN_GAME)
 );
 
