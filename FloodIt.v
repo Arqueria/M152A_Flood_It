@@ -73,11 +73,11 @@ wire INITIALIZE_BOARD;
 wire BOARD_READY;
 
 // Interconnects between selector and game logic
-wire INITIAL_INITIALIZATION;
+wire INIT_INIT;
 wire COLOR_SEL_SIG;
 wire [2:0] COLOR_SELECTED;
 wire BEGIN_GAME;
-wire ACK_BEGIN_GAME;
+wire STARTED_GAME;
 wire [4:0] SIZE;
 wire [3:0] COLOR_NUM;
 wire CHANGING_COLOR;
@@ -106,12 +106,12 @@ select selector(
     .BOARD_READY(BOARD_READY),
 
     // game logic
-    .INITIALIZED(INITIAL_INITIALIZATION),
+    .INIT_INIT(INIT_INIT),
     .CURRENTLY_CHANGING_COLOR(CHANGING_COLOR),
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .COLOR_SELECTED(COLOR_SELECTED),
     .BEGIN_GAME(BEGIN_GAME),
-    .ACK_BEGIN_GAME(ACK_BEGIN_GAME),
+    .STARTED_GAME(STARTED_GAME),
     .SIZE(SIZE),
     .COLOR_NUM(COLOR_NUM),
 
@@ -175,7 +175,7 @@ game_logic logicc(
     .COLOR_SELECTED(COLOR_SELECTED),
     .COLOR_SEL_SIG(COLOR_SEL_SIG),
     .CHANGING_COLOR(CHANGING_COLOR),
-    .INITIAL_INIT(INITIAL_INITIALIZATION),
+    .INIT_INIT(INIT_INIT),
     .BEGIN_GAME(BEGIN_GAME),
     .STARTED_GAME(ACK_BEGIN_GAME)
 );
@@ -184,7 +184,7 @@ displayVGA display(
     .CLOCK(MHZ25),
     .BOARD(CURR_BOARD),
     .SIZE(final_SIZE),
-    .INITIALIZED(INITIAL_INITIALIZATION),
+    .INIT_INIT(INIT_INIT),
     .vgaRed(vgaRed),
     .vgaBlue(vgaBlue),
     .vgaGreen(vgaGreen),
@@ -210,6 +210,6 @@ leds_set LEDS(
 // 3 Yellow
 // 4    
 // 5 
-// 6 
+// 6
 // 7 
 endmodule

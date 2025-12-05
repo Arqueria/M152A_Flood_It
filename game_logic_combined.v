@@ -11,8 +11,8 @@ module game_logic(
     input wire COLOR_SEL_SIG,
     output reg CHANGING_COLOR = 0,
     
-    output reg INITIAL_INIT = 0,
-    input wire START_NEW_GAME,
+    output reg INIT_INIT = 0,
+    input wire BEGIN_GAME,
     output reg STARTED_GAME = 0
 );
 
@@ -44,13 +44,13 @@ module game_logic(
     // --- ENABLE SIGNAL / TIMER ---
     // We use this to slow down the 100MHz clock to create an animation effect
     reg [19:0] anim_timer = 0; 
-    localparam ANIM_SPEED = 10; // Adjust this value to change animation speed
+    localparam ANIM_SPEED = 200000; // Adjust this value to change animation speed
 
     // --- SINGLE DRIVER BLOCK ---
     always @ (posedge CLOCK)
     begin
         // Priority 1: Reset / Initialize Game
-        if(START_NEW_GAME)
+        if(BEGIN_GAME)
         begin
             if(~STARTED_GAME)
             begin
@@ -73,7 +73,7 @@ module game_logic(
                 
                 STARTED_GAME <= 1;
                 CHANGING_COLOR <= 0;
-                INITIAL_INIT <= 1;
+                INIT_INIT <= 1;
                 
                 // Reset BFS state
                 bfs_state <= BFS_IDLE;

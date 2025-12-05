@@ -20,13 +20,13 @@ module select(
 	
  	// Interactions with game logic
 	
-	input wire INITIALIZED,
+	input wire INIT_INIT,
 
 	input wire CURRENTLY_CHANGING_COLOR,
 	output reg COLOR_SEL_SIG = 0,
 	output reg [2:0] COLOR_SELECTED = 0,
     output reg BEGIN_GAME = 0,
-	input wire ACK_BEGIN_GAME,
+	input wire STARTED_GAME,
 	output reg [4:0] SIZE = 14,
 	output reg [3:0] COLOR_NUM = 6,
 
@@ -211,14 +211,14 @@ begin
 	end
 
 
-	if(BEGIN_GAME == 1 || ACK_BEGIN_GAME == 1)
+	if(BEGIN_GAME == 1 || STARTED_GAME == 1)
 	begin
 		MODE <= 1;
 	end
 	else if (RIGHT_PREV == 0 && RIGHT == 1)
 	begin
 		ACK_RIGHT <= 1;
-		if(~ACK_RIGHT && INITIALIZED)
+		if(~ACK_RIGHT && INIT_INIT)
 			MODE <= ~MODE;
 	end
 	else 
@@ -228,7 +228,7 @@ begin
 
 
 
-	if(~INITIALIZED)
+	if(~INIT_INIT)
 	begin
 		INITIALIZE_BOARD <= 1;
 		final_SIZE <= SIZE;
@@ -244,13 +244,13 @@ begin
 	end
 	else if(BEGIN_GAME)
 	begin
-		if(ACK_BEGIN_GAME)
+		if(STARTED_GAME)
 			BEGIN_GAME <= 0;
 	end
 	else if (CENTER_PREV == 0 && CENTER == 1)
 	begin
 		ACK_CENTER <= 1;
-		if(~ACK_RIGHT && ~MODE)
+		if(~ACK_CENTER && ~MODE)
 		begin
 			INITIALIZE_BOARD <= 1;
 			final_SIZE <= SIZE;
@@ -279,7 +279,7 @@ reg SW7p = 0;
 
 always @ (posedge MASTER_CLOCK)
 begin
-if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~ACK_BEGIN_GAME && INITIALIZED)
+if(MODE && ~BEGIN_GAME && ~INITIALIZE_BOARD && ~BOARD_READY && ~STARTED_GAME && INIT_INIT)
 begin
 	SW0p <= sw[0];
 	SW1p <= sw[1];
@@ -348,7 +348,7 @@ else if (INITIALIZE_BOARD)
 begin   
     TRIES <= 0;
 end
-else if (~INITIALIZED)
+else if (~INIT_INIT)
 begin
     SW0p <= sw[0];
 	SW1p <= sw[1];

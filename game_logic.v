@@ -11,7 +11,7 @@ module game_logic(
     input wire COLOR_SEL_SIG,
     output reg CHANGING_COLOR = 0,
     
-    output reg INITIAL_INIT = 0,
+    output reg INIT_INIT = 0,
     input wire BEGIN_GAME,
     output reg STARTED_GAME = 0
 );
@@ -46,7 +46,7 @@ module game_logic(
                 
                 STARTED_GAME <= 1;
                 CHANGING_COLOR <= 0;
-                INITIAL_INIT <= 1;
+                INIT_INIT <= 1;
             end
         end
         
