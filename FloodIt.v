@@ -148,8 +148,8 @@ generate_board random_gen(
 digit_display digdisp(
     .CLOCK(HZ1000),
     .CLOCK_B(HZ4),
-	.COLOR_NUM(final_COLOR_NUM),
-	.SIZE(final_SIZE),
+	.COLOR_NUM(COLOR_NUM),
+	.SIZE(SIZE),
 	.sORc(sORc),
 	.MODE(MODE),
 	.TRIES(TRIES),
