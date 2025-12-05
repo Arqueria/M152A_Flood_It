@@ -83,7 +83,11 @@ digit_display digit_display_module(
 
 leds_set leds_set_module(
     .final_COLOR_NUM(final_COLOR_NUM),
-    .led(led)
+    .led(led),
+    .BEGIN_GAME(BEGIN_GAME),
+    .INITIALIZE_BOARD(INITIALIZE_BOARD),
+    .ACK_BEGIN_GAME(ACK_BEGIN_GAME),
+    .INIT_INIT(INIT_INIT)
 );
 
 

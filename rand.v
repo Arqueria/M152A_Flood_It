@@ -25,12 +25,13 @@ begin
 	if(INITIALIZE_BOARD && ~running && ~BOARD_READY)
 	begin
 		running <= 1;
-		setting <= 0;
 		
 		if(seed)
 			R <= seed;
 		else
 			R <= 16'b1101101011010111;
+
+		CURR_COLOR <= R[1:0];
 
 	end	
 	else if (~INITIALIZE_BOARD && BOARD_READY)
@@ -45,42 +46,41 @@ begin
 	end 
 	else if(running)
 	begin
-		setting <= ~setting;
-		if(~setting)
-		begin
-			R <= { R[15:1] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
+
+
+		R <= { R[15:1] , ( (R[15]^R[13]) ^ R[12] ) ^ R[10] };
+	
+		CURR_COLOR <= R[1:0];
 		
-			
-			if ( final_COLOR_NUM == 3 )
-				CURR_COLOR <= R % 3;
+		//if ( final_COLOR_NUM == 3 )
+		//	CURR_COLOR <= R % 3;
 
-			else if ( final_COLOR_NUM == 4 )
-				CURR_COLOR <= R % 4;
-			
-			else if ( final_COLOR_NUM == 5 )
-				CURR_COLOR <= R % 5;
-			
-			else if ( final_COLOR_NUM == 6 )
-				CURR_COLOR <= R % 6;
-			
-			else if ( final_COLOR_NUM == 7 )
-				CURR_COLOR <= R % 7;
-			
-			else if ( final_COLOR_NUM == 8 )
-				CURR_COLOR <= R % 8;
-		end
-		else if (setting)
+		//else if ( final_COLOR_NUM == 4 )
+		//	CURR_COLOR <= R % 4;
+		
+		//else if ( final_COLOR_NUM == 5 )
+		//	CURR_COLOR <= R % 5;
+		
+		//else if ( final_COLOR_NUM == 6 )
+		//	CURR_COLOR <= R % 6;
+		
+//	else if ( final_COLOR_NUM == 7 )
+//		CURR_COLOR <= R % 7;
+//	
+//	else if ( final_COLOR_NUM == 8 )
+//		CURR_COLOR <= R % 8;
+
+
+
+		INITIAL_BOARD[ROW][COL] <= CURR_COLOR;
+		if ( COL + 1 == final_SIZE )
 		begin
-
-			INITIAL_BOARD[ROW][COL] <= CURR_COLOR;
-			if ( COL + 1 == final_SIZE )
-			begin
-				COL <= 0;
-				ROW <= ROW + 1;
-			end
-			else
-				COL <= COL + 1;
+			COL <= 0;
+			ROW <= ROW + 1;
 		end
+		else
+			COL <= COL + 1;
+
 	end
 end
 
